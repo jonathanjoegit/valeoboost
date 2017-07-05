@@ -1,0 +1,135 @@
+
+// vars : (A METTRE DANS UN FICHIER ENSUITE !!!)
+// === === === === === === === === === === ===
+
+// général
+$linkColor: #08C;
+
+
+//navbar :
+$navbarBackgroundColor : #232934;
+$navbarBorderColor : #bbbbb9;
+$navbarBorderSize: 1px;
+$navbarColor:               rgba(255,255,255,.90) !default;
+$navbarHoverColor:          rgba(255,255,255,1) !default;
+$navbarActiveColor:         rgba(255,255,255,1) !default;
+$navbarDisabledColor:       rgba(255,255,255,.6) !default;
+$navbarDropMenuColor:       $navbarBackgroundColor;
+
+// next
+
+
+// Style :
+// === === === === === === === === === === ===
+
+// général :
+// --- --- --- --- --- --- --- --- --- --- --- 
+
+a {
+	color: $linkColor;
+}
+th, td {
+	border: none;
+}
+
+//navbar :
+// --- --- --- --- --- --- --- --- --- --- --- 
+header{
+	.logo img{
+		height: 27px;
+		width: auto;
+	}
+}
+.navbar-dark {
+	background-color: $navbarBackgroundColor; 
+	border-bottom: $navbarBorderSize solid $navbarBorderColor;
+}
+// White links against a dark background
+.navbar-dark {
+	.navbar-brand {
+		color: $navbarActiveColor;
+
+		@include hover-focus {
+			color: $navbarActiveColor;
+		}
+	}
+
+	.navbar-nav {
+		.nav-link {
+			color: $navbarColor;
+
+			@include hover-focus {
+				color: $navbarHoverColor;
+			}
+		}
+
+		.open > .nav-link,
+		.active > .nav-link,
+		.nav-link.open,
+		.nav-link.active {
+			@include plain-hover-focus {
+				color: $navbarActiveColor;
+			}
+	  
+		}
+		.nav-item {
+			float: right; // POUR METTRE LA LANGUES ET TOUT A DROITE !!!
+			margin-right: 10px;
+		}
+		.usermenu {
+		    margin-left: 10px;
+		}
+
+		.navbar-divider {
+			background-color: rgba(255,255,255,.075);
+		}
+	}
+	.menubar{
+		a{
+			color: $navbarColor;
+		}
+		a:hover{
+			color: $navbarHoverColor;
+		}
+		.dropdown-menu{
+			a, a .icon{
+				color: $navbarDropMenuColor !important;
+			}
+		}
+	
+	}
+}
+
+
+// next : 
+// --- --- --- --- --- --- --- --- --- --- --- 
+
+
+/*body.pagelayout-login {
+background-image: url([[pix:theme_photo|loginbackgroundimage]]);
+background-size: cover;
+}
+body.pagelayout-frontpage {
+background-image: url([[pix:theme_photo|frontpagebackgroundimage]]);
+background-size: cover;
+}
+body.pagelayout-mydashboard {
+background-image: url([[pix:theme_photo|dashboardbackgroundimage]]);
+background-size: cover;
+}
+body.pagelayout-course,
+body.pagelayout-incourse {
+background-image: url([[pix:theme_photo|incoursebackgroundimage]]);
+background-size: cover;
+}
+body.pagelayout-embedded,
+body.pagelayout-popup,
+body.pagelayout-secure,
+body.pagelayout-print {
+background-image: none;
+}
+body {
+background-image: url([[pix:theme_photo|defaultbackgroundimage]]);
+background-size: cover;
+}
+*/
