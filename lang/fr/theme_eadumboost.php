@@ -30,7 +30,7 @@ $string['choosereadme'] = 'EADUM (Boost)- Theme developed by the Université du 
 /* custom : */
 $string['noenrolments'] = 'Aucun cours';
 $string['FAQ'] = 'FAQ';
-$string['mail'] = 'Mail';
+$string['mail'] = 'Boîte mail UM';
 $string['support'] = 'Aide';
 $string['support:'] = 'Aide :';
 $string['assistanceEtu'] = 'Assistance étudiants';
