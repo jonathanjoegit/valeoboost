@@ -17,7 +17,10 @@ $navbarActiveColor:         rgba(255,255,255,0.8) !default;
 $navbarDisabledColor:       rgba(255,255,255,.5) !default;
 $navbarDropMenuColor:       $navbarBackgroundColor;
 
-// next
+//Login :
+$themeBtnLoginColor : #e5512b;
+$themeBtnLoginHover: #d5411b;
+$cadreHome : #eeeee9;
 
 
 // Style :
@@ -131,7 +134,7 @@ header{
 
 // Footer :
 // --- --- --- --- --- --- --- --- --- --- --- 
-#page-footer {
+#page-footer {	
 	background-color: $navbarBackgroundColor !important;
 	border-top: $navbarBorderSize solid $navbarBorderColor;
 	text-align: center;
@@ -144,7 +147,9 @@ header{
 	
 
 	.footerUM{
-	   
+		.logoUmPrn a:hover{
+			text-decoration: none;
+		}
 		   
 		
 		img{
@@ -209,11 +214,52 @@ header{
 
 /** HOME PAGE A REFAIRE !!!
 -------------------------*/
-
-#page-site-index{
-	padding-top: 25px;
-	background: #FFF;
+html.homepageead{
+	background-color: $navbarBackgroundColor;
 }
+#page-site-index{
+	
+	padding-top: 25px;
+		
+	
+	
+	#subheader{
+		img.icon{
+			height: 90px;
+			width: auto;
+			@media (max-width: 767px){
+				font-size: 18px;
+			}
+		}
+		#subheader h1 {
+			color: #FFF;
+			font-size: 2em;
+			font-weight: 400;
+			line-height: 1.1;
+			font-style: italic;
+			@media (max-width: 767px){
+				font-size: 1.5em;
+			}
+		}
+	}
+	
+	
+	#region-main{
+		img{
+			height: 65px;
+			width: auto;
+		}
+	}
+	.btn-play{
+		img{
+			height: 120px;
+			width: auto;
+			margin: 0 auto;
+		}
+	}
+	
+}
+
 
 #subheader
 {
@@ -257,7 +303,7 @@ header{
 	padding: 14px;
 	text-align: center;
 	border: 2px solid #ffffff;
-	background: @themeBtnLoginColor;
+	background: $themeBtnLoginColor;
 	border-radius: 8px 8px 8px 8px;
 	-moz-border-radius: 8px 8px 8px 8px;
 	-webkit-border-radius: 8px 8px 8px 8px;
@@ -267,7 +313,7 @@ header{
 
 .btn-login:hover
 {
-	background: @themeBtnLoginHover;
+	background: $themeBtnLoginHover;
 }
 
 .btn-login a
@@ -294,8 +340,8 @@ div.cadre-home{
 	margin-top:20px;
 	margin-bottom:20px;
 	padding: 20px;
-	border: 3px solid @themeColorLight;
-	background:  @themeBgLight;
+	border: 3px solid $navbarBorderColor;
+	background:  $cadreHome;
 	border-radius: 8px 8px 8px 8px;
 	-moz-border-radius: 8px 8px 8px 8px;
 	-webkit-border-radius: 8px 8px 8px 8px;
@@ -308,7 +354,7 @@ ul.home_ufr{
 }
 
 ul.home_ufr li{
-	border-left: solid 4px @themeColorLight;
+	border-left: solid 4px $navbarBorderColor;
 	padding-left: 10px;
 	margin-top: 10px;
 	line-height: 20px;
@@ -356,7 +402,8 @@ video#bgvid {
 	-moz-transform: translateX(-50%) translateY(-50%);
 	-webkit-transform: translateX(-50%) translateY(-50%);
 	transform: translateX(-50%) translateY(-50%);
-	background: url([[pix:theme|banner_1400]]) no-repeat;
+	background-color: $navbarBackgroundColor;
+	background-image: url([[pix:theme|banner_1400]]) no-repeat;
 	background-size: cover; 
 	opacity: 0.3;
 	filter: alpha(opacity=30); 
