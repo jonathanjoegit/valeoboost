@@ -116,6 +116,12 @@ header{
 // Menu latéral (nav-drawer) : 
 // --- --- --- --- --- --- --- --- --- --- --- 
 
+// HACK pour masquer les elt inutiles :
+[data-key="home"], [data-key="privatefiles"]{
+	display:none;
+}
+
+
 #nav-drawer {
 	
 	background-color: #cedadf;

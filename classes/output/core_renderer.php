@@ -50,6 +50,49 @@ class core_renderer extends \theme_boost\output\core_renderer {
         $custommenu = new custom_menu($custommenuitems, current_language());
 		
 		// Custom :
+		
+        // TDB + listes des cours :
+       $branchtitle = $branchlabel = get_string('myhome');
+       $branchurl = new moodle_url('');
+       $branchsort = 70000;
+
+       $branch = $custommenu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
+
+       $hometext = get_string('myhome');
+       $homelabel = html_writer::tag('i', '', array('class' => 'fa fa-home')).html_writer::tag('span', ' '.$hometext);
+       $branch->add($homelabel, new moodle_url('/my/index.php'), $hometext);
+
+       // Get 'My courses' sort preference from admin config.
+       if (!$sortorder = $CFG->navsortmycoursessort) {
+           $sortorder = 'sortorder';
+       }
+
+       // Retrieve courses and add them to the menu when they are visible.
+       $numcourses = 0;
+       //$hasdisplayhiddenmycourses = \theme_essential\toolbox::get_setting('displayhiddenmycourses');
+       if ($courses = enrol_get_my_courses(null, $sortorder . ' ASC')) {
+           foreach ($courses as $course) {
+               if ($course->visible) {
+                   $branch->add('<span class="fa fa-graduation-cap"></span>'.format_string($course->fullname),
+                       new moodle_url('/course/view.php?id=' . $course->id), format_string($course->shortname));
+                   $numcourses += 1;
+               } else if (has_capability('moodle/course:viewhiddencourses', context_course::instance($course->id)) /*&& $hasdisplayhiddenmycourses*/) {
+                   $branchtitle = format_string($course->shortname);
+                   $branchlabel = '<span class="dimmed_text">'/*.$this->getfontawesomemarkup('eye-slash')*/.
+                       format_string($course->fullname) . '</span>';
+                   $branchurl = new moodle_url('/course/view.php', array('id' => $course->id));
+                   $branch->add($branchlabel, $branchurl, $branchtitle);
+                   $numcourses += 1;
+               }
+           }
+       }
+       if ($numcourses == 0 || empty($courses)) {
+           $noenrolments = get_string('noenrolments', 'theme_eadum');
+           $branch->add('<em>' . $noenrolments . '</em>', new moodle_url(''), $noenrolments);
+       }
+		
+		
+		
         // Mail
         $branchtitle = $branchlabel = get_string('mail', 'theme_eadumboost');
         $branchurl = new moodle_url('http://webmail.univ-lemans.fr/');
