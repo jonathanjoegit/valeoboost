@@ -22,8 +22,8 @@ $string['rawscsspre'] = 'Raw initial SCSS';
 $string['rawscsspre_desc'] = 'In this field you can provide initialising SCSS code, it will be injected before everything else. Most of the time you will use this setting to define variables.';
 $string['region-side-pre'] = 'Right';
 
-$string['configtitle'] = 'EADUM';
-$string['pluginname'] = 'EADUM';
+$string['configtitle'] = 'EADUM (Boost)';
+$string['pluginname'] = 'EADUM (Boost)';
 $string['choosereadme'] = 'EADUM (Boost)- Theme developed by the Université du Maine';
 
 
