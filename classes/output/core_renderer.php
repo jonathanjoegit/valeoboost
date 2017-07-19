@@ -29,6 +29,7 @@ use single_button;
 use single_select;
 use paging_bar;
 use url_select;
+use context_system;
 use context_course;
 use pix_icon;
 
@@ -42,7 +43,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
 	* theme settings page.
 	*/
 	public function custom_menu($custommenuitems = '') {
-		global $CFG, $PAGE;
+		global $CFG, $PAGE, $USER;
 
 		if (empty($custommenuitems) && !empty($CFG->custommenuitems)) {
 			$custommenuitems = $CFG->custommenuitems;
@@ -91,7 +92,18 @@ class core_renderer extends \theme_boost\output\core_renderer {
 				$noenrolments = get_string('noenrolments', 'theme_eadumboost');
 				$branch->add('<em>' . $noenrolments . '</em>', new moodle_url(''), $noenrolments);
 			}
+			
 		
+			
+			// Si admin ou manager : afficher liste des cours
+			if (user_has_role_assignment($USER->id, 1) || is_siteadmin()){
+			           
+				// test
+				$branchtitle = $branchlabel = "Tous les cours";
+				$branchurl = new moodle_url('/course/index.php');
+				$branchsort = 60000;
+				$custommenu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
+			}
 			
 			// Mail
 			$branchtitle = $branchlabel = get_string('mail', 'theme_eadumboost');
