@@ -85,3 +85,11 @@
     </div>
 </footer>
   
+{{#js}}
+require(['jquery', 'jqueryui'], function($, jqui) {
+    // add target blank @ "mail" menu
+    $("header.navbar a[title='Boîte mail UM']").attr('target' ,'_blank');
+     $("header.navbar a[title='Mailbox']").attr('target' ,'_blank');
+});  
+{{/js}}
+	  

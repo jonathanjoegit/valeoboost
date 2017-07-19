@@ -92,8 +92,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
 				$branch->add('<em>' . $noenrolments . '</em>', new moodle_url(''), $noenrolments);
 			}
 		
-		
-		
+			
 			// Mail
 			$branchtitle = $branchlabel = get_string('mail', 'theme_eadumboost');
 			$branchurl = new moodle_url('http://webmail.univ-lemans.fr/');

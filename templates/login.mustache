@@ -87,17 +87,22 @@ require(['jquery', 'jqueryui'], function($, jqui) {
             $(this).text( $(this).html().replace('Weitere Nutzer/innen','Weitere Nutzer (Universität Angers/Tours)') );
             
             $(this).css('font-size', '1.3em');
+			
+			
         }
     });
    
-    //Ajout d'une image pour le login form
+    //Ajout d'une image pour le login form (1e page)
     $('.loginpanel').each(function() {
         $(this).prepend('{{# pix }} login_avatar, theme{{/ pix }}');
     });
     
     //Ajout d'une image pour les utilisateurs d'angers
-    $('.signuppanel').each(function() {
-        $(this).prepend('{{# pix }} univ-angers, theme{{/ pix }}');
+    $('.card-block .card-title H2').each(function() {
+		
+        $(this).html().replace('Première visite sur ce site ?','Nutzer/in der Université du Maine ') ;
+		
+        //$(this).prepend('{{# pix }} univ-angers, theme{{/ pix }}');
 	
    	 
     });
