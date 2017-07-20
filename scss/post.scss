@@ -228,12 +228,31 @@ html.homepageead{
 	background-color: $navbarBackgroundColor;
 }
 #page-site-index{
-	
+	background:none;
 	padding-top: 25px;
-		
-	
-	
+
 	#subheader{
+		padding-top: 20px;
+		text-align: center;
+		width: 100%;
+		margin : -10px auto 20px auto;
+		-webkit-background-size: 100%;
+		-moz-background-size: 100%;
+		-o-background-size: 100%;
+		background-size: 100%;
+		
+		.container {
+			width: auto;
+			padding-right: 15px;
+			padding-left: 15px;
+			margin-right: auto;
+			margin-left: auto;
+			text-align: center;
+		}
+		.row {
+			margin: 20px -15px 30px -15px;
+		}
+		
 		img.icon{
 			height: 90px;
 			width: auto;
@@ -241,159 +260,122 @@ html.homepageead{
 				font-size: 18px;
 			}
 		}
-		#subheader h1 {
+		h1 {
 			color: #FFF;
 			font-size: 2em;
 			font-weight: 400;
-			line-height: 1.1;
+			line-height: 1.7;
 			font-style: italic;
 			@media (max-width: 767px){
 				font-size: 1.5em;
 			}
+			
 		}
+		.btn-login	{
+			width: 320px;
+			margin: 35px auto 0 auto;
+			padding: 14px;
+			text-align: center;
+			border: 2px solid #ffffff;
+			background: $themeBtnLoginColor;
+			border-radius: 8px 8px 8px 8px;
+			-moz-border-radius: 8px 8px 8px 8px;
+			-webkit-border-radius: 8px 8px 8px 8px;
+			cursor: pointer;
+			line-height: normal;
+		}
+
+		.btn-login:hover{
+			background: $themeBtnLoginHover;
+		}
+
+		.btn-login a	{
+			font-size: 2.3em;
+			color: #ffffff;
+			text-transform: uppercase;
+			font-weight:450;
+			line-height: normal;
+    
+   
+		}
+
+		.btn-login a:hover	{
+			color: #ffffff;
+			text-decoration: none;
+		}
+		.btn-login a:link , .btn-login a:visited 	{
+			color: #ffffff;
+		}
+		
+		.btn-play{
+			margin-top:70px;
+			img{
+				height: 120px;
+				width: auto;
+				margin: 0 auto;
+				
+				display:block;
+				text-align: center;
+				margin: 5px auto 3px auto;
+			}
+			a {
+				color:#FFF !important;
+				font-size:1.1em;
+			}
+			
+		}
+		
 	}
 	
 	
 	#region-main{
-		img{
-			height: 65px;
-			width: auto;
-		}
-	}
-	.btn-play{
-		img{
-			height: 120px;
-			width: auto;
-			margin: 0 auto;
-		}
-	}
-	
-}
+		
+		div.cadre-home{
+			max-width : 1200px;
+			margin :20px auto;
+			padding: 20px;
+			border: 3px solid $navbarBorderColor;
+			background:  $cadreHome;
+			border-radius: 8px 8px 8px 8px;
+			-moz-border-radius: 8px 8px 8px 8px;
+			-webkit-border-radius: 8px 8px 8px 8px;
+			opacity: 0.8;
+			filter: alpha(opacity=80); 
+			
+			.imgcenter{
+				text-align: center;
 
-
-#subheader
-{
-	//background:  url([[pix:theme|banner_1400]]) no-repeat center center;
-	padding-top: 20px;
-	text-align: center;
-	/*min-height: 100%;*/
-	width: 100%;
-	margin : -10px auto 20px auto;
-	-webkit-background-size: 100%;
-	-moz-background-size: 100%;
-	-o-background-size: 100%;
-	background-size: 100%;
-
-}
-
-#subheader .container {
-	width: auto;
-	padding-right: 15px;
-	padding-left: 15px;
-	margin-right: auto;
-	margin-left: auto;
-	text-align: center;
-}
-#subheader .row {
-	margin: 20px -15px 50px -15px;
-}
-#subheader h1 {
-	color:#FFFFFF;
-	font-size:2em;
-	font-weight: normal;
-	/*text-shadow: 5px 5px 7px #000;*/
-	line-height: 15px;
-	font-style: italic; 
-}
-
-.btn-login
-{
-	width: 320px;
-	margin: 35px auto 0 auto;
-	padding: 14px;
-	text-align: center;
-	border: 2px solid #ffffff;
-	background: $themeBtnLoginColor;
-	border-radius: 8px 8px 8px 8px;
-	-moz-border-radius: 8px 8px 8px 8px;
-	-webkit-border-radius: 8px 8px 8px 8px;
-	cursor: pointer;
-	line-height: normal;
-}
-
-.btn-login:hover
-{
-	background: $themeBtnLoginHover;
-}
-
-.btn-login a
-{
-	font-size: 2.3em;
-	color: #ffffff;
-	text-transform: uppercase;
-	font-weight:450;
-	line-height: normal;
+				img{
+					height: 65px;
+					width: auto;
+					padding: 5px;
+				}
+			}
+			ul.home_ufr{
+				list-style-type: none;
+				li{
+					border-left: solid 4px $navbarBorderColor;
+					padding-left: 10px;
+					margin-top: 10px;
+					line-height: 20px;
+					font-size: 1.4em;
     
-   
-}
+				}
+			}
+		
+			div.text_home{
+				text-align:justify;
+				font-size :1.3em;
+				
+				div{
+					padding-top: 25px !important;
+				}
 
-.btn-login a:hover
-{
-	color: #ffffff;
-	text-decoration: none;
-}
-.btn-login a:link , .btn-login a:visited 
-{
-	color: #ffffff;
-}
-div.cadre-home{
-	margin-top:20px;
-	margin-bottom:20px;
-	padding: 20px;
-	border: 3px solid $navbarBorderColor;
-	background:  $cadreHome;
-	border-radius: 8px 8px 8px 8px;
-	-moz-border-radius: 8px 8px 8px 8px;
-	-webkit-border-radius: 8px 8px 8px 8px;
-	opacity: 0.8;
-	filter: alpha(opacity=80); 
-}
-
-ul.home_ufr{
-	list-style-type: none;
-}
-
-ul.home_ufr li{
-	border-left: solid 4px $navbarBorderColor;
-	padding-left: 10px;
-	margin-top: 10px;
-	line-height: 20px;
-	font-size: 1.4em;
-    
-}
-div.text_home{
-	padding-top:20px ;
-	text-align:justify;
-}
-
-div.text_home .contain_text {
-	padding:15px 15px 15px 15px ;
-	font-size :1.3em;
+			}
+		}	
+	}
 
 }
-div.text_home .p_home {
-	padding-left: 100px;
-	min-height:50px;
-
-}
-
-div.text_home  img{
-	padding: 0 15px 0 15px;
-	/*margin-top:4px;*/
-	float:left;
-}
-
-
 
 
 // TEST video en HOMEPAGE
@@ -424,32 +406,9 @@ video#bgvid {
 }
 .stopfade { opacity: .5; }
 
-#page-site-index{
-	background:none;
-}
 
-/*@media screen and (max-device-width: 800px) {
-html {
-background: url(???polina.jpg) #000 no-repeat center center fixed;
-}
-#bgvid {
-display: none;
-}
-}*/
 
-div.btn-play{
-	margin-top:90px;
-}
-div.btn-play a {
-	color:#FFF !important;
-	font-size:1.1em;
-}
-div.btn-play img{
-	display:block;
-	text-align: center;
-	margin: 5px auto 3px auto;
-}
-/** FIN HOME PAGE A REFAIRE !!!
+/** FIN HOME PAGE 
 -------------------------*/
 
 
