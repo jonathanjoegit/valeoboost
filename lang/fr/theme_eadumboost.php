@@ -24,7 +24,7 @@ $string['region-side-pre'] = 'Right';
 
 $string['configtitle'] = 'EADUM (Boost)';
 $string['pluginname'] = 'EADUM (Boost)';
-$string['choosereadme'] = 'EADUM (Boost)- Theme developed by the Université du Maine';
+$string['choosereadme'] = 'EADUM (Boost)- Theme developed by  Le Mans Université';
 
 
 /* custom : */
@@ -45,12 +45,12 @@ $string['connect'] = 'Se connecter';
 $string['watchvideo'] = 'Regarder la vidéo';
 
 $string['txthome1'] = ' <H3>Accès Plateforme :</H3>
-                        Cette plateforme d\'e-learning s\'adresse aux personnes inscrites dans une des formations à distance de l\'Université du Maine.
-                        Une fois inscrit à l\'université du Maine, vous recevrez les indications qui vous permettrons de récupérer vos identifiants de connexion pour avoir accès aux activités et ressources numériques de vos cours (voir FAQ).
+                        Cette plateforme d\'e-learning s\'adresse aux personnes inscrites à Le Mans Université dans une des formations à distance.
+                        Une fois inscrit à Le Mans Université, vous recevrez les indications qui vous permettrons de récupérer vos identifiants de connexion pour avoir accès aux activités et ressources numériques de vos cours (voir FAQ).
                         La plateforme est un espace collaboratif dans lequel vous pourrez consulter vos contenus de cours et échanger avec les étudiants et les enseignants de votre formation.
                     ';
 $string['txthome2'] = '<H3>Nos formations :</H3>
-                        Depuis 2001, l\'Université du Maine vous propose plus de 20 diplômes à distance répartis dans 4 domaines :
+                        Depuis 2001, Le Mans Université vous propose plus de 20 diplômes à distance répartis dans 4 domaines :
                         <ul>
                         <li>Droit, économie, gestion</li>
                         <li>Arts, lettres, langues</li>

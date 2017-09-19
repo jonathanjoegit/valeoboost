@@ -48,10 +48,10 @@ $string['connect'] = 'Login';
 $string['watchvideo'] = 'Watch the video';
 
 $string['txthome1'] = ' <H3>Virtual Learning Environment :</H3>
-                        This e-learning platform is dedicated to learners who have enrolled to one of the distance-learning courses at the Université du Maine.  Once registered, you need to get your login and password in order to access digital resources and activities.  Our VLE is a collaborative environment where you will be able to explore educational contents and interact with students and lecturers on your course.
+                        This e-learning platform is dedicated to learners who have enrolled to one of the distance-learning courses at Le Mans Université.  Once registered, you need to get your login and password in order to access digital resources and activities.  Our VLE is a collaborative environment where you will be able to explore educational contents and interact with students and lecturers on your course.
                         ';
 $string['txthome2'] = '<H3>Our training courses :</H3>
-                        Since 2001, the Université du Maine offers over 20 distance-learning qualifications in 4 areas :
+                        Since 2001, Le Mans Université offers over 20 distance-learning qualifications in 4 areas :
                         <ul>
                         <li>Law, economics, management</li>
                         <li>Arts, literature, languages</li>

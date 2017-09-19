@@ -46,14 +46,14 @@ $string['watchvideo'] = 'Video ansehen';
 
 $string['txthome1'] = ' <H3>Zugang zur Plattform  :</H3>
                         Dieses e-learning Portal ist zugänglich für Personen, 
-                        die in einem Fernlehrgang an der Université du Maine eingeschrieben sind. 
+                        die in einem Fernlehrgang an der Le Mans Université eingeschrieben sind. 
                         Sobald Sie immatrikuliert sind, erhalten Sie Ihre Zugangsdaten für das e-learning Portal 
                         und können somit auf die verschiedenen digitalen Ressourcen ihres Studienganges zugreifen. 
                         Es handelt sich hierbei um eine gemeinsame Arbeitsplattform, Sie können auf die Lehrinhalte 
                         Ihrer verschiedenen Module zugreifen, sowie sich mit Ihren Professoren und anderen Studenten austauschen.  
                        ';
 $string['txthome2'] = '<H3>Angebotene Studiengänge :</H3>
-                        Seit 2001 bietet die Université du Maine über 20 verschiedene Studiengänge aus den Bereichen :
+                        Seit 2001 bietet die Le Mans Université über 20 verschiedene Studiengänge aus den Bereichen :
                         <ul>
                         <li>Recht, Wirtschaft, Management</li>
                         <li>Kunst, Literaturwissenschaften, Sprachen</li>
