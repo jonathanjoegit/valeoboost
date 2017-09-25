@@ -32,5 +32,8 @@ $templatecontext = [
     'bodyattributes' => $bodyattributes
 ];
 
+// modif du nav-drawer
+theme_eadumboost_custom_nav_drawer($PAGE->navigation);
+
 echo $OUTPUT->render_from_template('theme_boost/columns1', $templatecontext);
 
