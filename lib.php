@@ -86,8 +86,8 @@ function theme_eadumboost_custom_nav_drawer(global_navigation $navigation) {
 	
 	// ajouter plugin "tuteur" :
 	// Vérifier si l'user à le droit d'afficher le rapport Tuteur
-	$usercontext = context_user::instance($USER->id);
-	if (has_capability('report/tuteur:view', $usercontext)) {
+	$context = $PAGE->context;
+	if (has_capability('report/tuteur:view', $context)) {
 		
 		// s'il y a des activités 
 		$completion = new completion_info ( $COURSE );
