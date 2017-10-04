@@ -111,6 +111,12 @@ header{
 		.navbar-divider {
 			background-color: rgba(255,255,255,.075);
 		}
+		// notification (pop-up)
+		#nav-notification-popover-container{
+			.notification a  {
+				color: $navbarBackgroundColor !important;
+			}
+		}
 	}
 	.menubar{
 		a{
