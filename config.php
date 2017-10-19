@@ -38,7 +38,6 @@ $THEME->scss = function($theme) {
     return theme_eadumboost_get_main_scss_content($theme);
 };
 
-
 $THEME->layouts = [
     // The site home page.
     'frontpage' => array(
