@@ -57,12 +57,12 @@ function theme_eadumboost_get_main_scss_content($theme) {
 	}
 
 	// Pre CSS - this is loaded AFTER any prescss from the setting but before the main scss.
-	$pre = file_get_contents($CFG->themedir . '/eadumboost/scss/pre.scss');
+	//$pre = file_get_contents($CFG->themedir . '/eadumboost/scss/pre.scss');
 	// Post CSS - this is loaded AFTER the main scss but before the extra scss from the setting.
 	$post = file_get_contents($CFG->themedir . '/eadumboost/scss/post.scss');
 
 	// Combine them together.
-	return $pre . "\n" . $scss . "\n" . $post;
+	return /*$pre . "\n" . */ $scss . "\n" . $post;
 }
 
 
@@ -75,7 +75,7 @@ function theme_eadumboost_get_main_scss_content($theme) {
 function theme_eadumboost_custom_nav_drawer(global_navigation $navigation) {
 	global $PAGE, $CFG, $COURSE, $USER;
 	require_once ($CFG->libdir . '/completionlib.php');
-	
+
 
 	// enlever "Home"
 	if ($homenode = $navigation->find('home', global_navigation::TYPE_ROOTNODE)) {
@@ -83,24 +83,23 @@ function theme_eadumboost_custom_nav_drawer(global_navigation $navigation) {
 	}
 	// enlever "Privat files"
 	// fait en CSS (display:none;) sinon c'est un peu galère (à voir plus tard)
-	
+
 	// ajouter plugin "tuteur" :
 	// Vérifier si l'user à le droit d'afficher le rapport Tuteur
 	$context = $PAGE->context;
 	if (has_capability('report/tuteur:view', $context)) {
-		
-		// s'il y a des activités 
+		// s'il y a des activités
 		$completion = new completion_info ( $COURSE );
 		$activities = $completion->get_activities ();
 		if (count ( $activities )>0 ){
 			// on récupère le noeud du cours (cours + section + ...)
-			$coursenode = $PAGE->navigation->find($COURSE->id, navigation_node::TYPE_COURSE); 			
+			$coursenode = $PAGE->navigation->find($COURSE->id, navigation_node::TYPE_COURSE);
 			// Si la navigation contient des items
 			if($coursenode && $coursenode->has_children() ){
-		
+
 				// on créer un noeud et on utilise le add de la classe navigation_node_collection pour le ranger
 				$url = new moodle_url($CFG->wwwroot.'/report/tuteur/index.php', array('course'=>$COURSE->id));
-				$nodereport = navigation_node::create("Rapport Tuteur", $url, navigation_node::TYPE_SETTING, "rapporttuteur", "rapporttuteur" ); 
+				$nodereport = navigation_node::create("Rapport Tuteur", $url, navigation_node::TYPE_SETTING, "rapporttuteur", "rapporttuteur" );
 				/* signature fonc : public static function create($text, $action=null, $type=self::TYPE_CUSTOM, $shorttext=null, $key=null, pix_icon $icon=null) {*/
 				// on check s'il y a le noeud "grades", si oui on le met en dessous (sinon à la fin)
 				if ($PAGE->navigation->find("grades", navigation_node::TYPE_SETTING)){
@@ -108,10 +107,37 @@ function theme_eadumboost_custom_nav_drawer(global_navigation $navigation) {
 				}else{ // sinon à la fin du noeud
 					$node = $coursenode->children->add($nodereport);
 				}
-		
+
 			}
 		}
 	}
 
-} // end of function theme_eadumboost_custom_nav_drawer
 
+
+  // ajouter "inscrire des utilisateurs" pour les admins :
+	// Vérifier si l'user à le droit d'inscrire des utilisateurs (donc d'accèder à cette page)
+	$context = $PAGE->context;
+	if (has_capability('enrol/manual:enrol', $context)) {
+			// on récupère le noeud du cours (cours + section + ...)
+			$coursenode = $PAGE->navigation->find($COURSE->id, navigation_node::TYPE_COURSE);
+			// Si la navigation contient des items
+			if($coursenode && $coursenode->has_children() ){
+				// on créer un noeud et on utilise le add de la classe navigation_node_collection pour le ranger
+				$url = new moodle_url($CFG->wwwroot.'/enrol/users.php', array('id'=>$COURSE->id));
+				$newNode = navigation_node::create(get_string('enrolusers', 'enrol'), $url, navigation_node::TYPE_SETTING, "enrolusers", "enrolusers" );
+				/* signature fonc : public static function create($text, $action=null, $type=self::TYPE_CUSTOM, $shorttext=null, $key=null, pix_icon $icon=null) {*/
+
+        // on check s'il y a le noeud "participants", si oui on le met en dessous (sinon à la fin)
+				if ($PAGE->navigation->find("participants", navigation_node::TYPE_CONTAINER)){
+					$node = $coursenode->children->add($newNode, "participants");
+				}else{ // sinon à la fin du noeud
+					$node = $coursenode->children->add($newNode);
+				}
+
+
+		}
+	}
+
+
+
+} // end of function theme_eadumboost_custom_nav_drawer
