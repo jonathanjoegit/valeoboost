@@ -3,7 +3,7 @@
  * Strings for theme, language 'en'
  *
  * @package    theme_eadumboost
- * @copyright  2017 Jonathan JUPIN - Université du Maine
+ * @copyright  2017 Jonathan J. - Université du Maine
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -31,7 +31,7 @@ $string['pluginname'] = 'EADUM (Boost)';
 $string['choosereadme'] = 'EADUM (Boost)- Theme developed by the Université du Maine';
 
 
-/* custom : */
+// Custom.
 $string['noenrolments'] = 'No enrolments';
 $string['FAQ'] = 'FAQ';
 $string['mail'] = 'Mailbox';
@@ -42,7 +42,7 @@ $string['serviceUni'] = 'University Services';
 $string['methodologie'] = 'Methodological resources';
 
 
-/* HOME */
+// Home.
 $string['sitetitle'] = 'Your individual access to further and higher education';
 $string['connect'] = 'Login';
 $string['watchvideo'] = 'Watch the video';
@@ -65,16 +65,16 @@ $string['txthome3'] = '<H3>Help :</H3>
                         <ul>
                         <li><a target="_blank" href="/moodle/um_apps/faq/faq-connexion.html">Read our FAQ</a></li>
                         <li>Contact us : <br />
-                        - by mail : 
+                        - by mail :
                         <a href="mailto:ead-assistance@univ-lemans.fr">ead-assistance@univ-lemans.fr</a> <i>(we will answer within 24 hours Mon-Fri))</i>
                          <br />
                          - by phone au <span style="color: #08C;">+33 2 43 83 26 88</span> <em>(service available between September and March)</em>
                         <br />
-                        
+
                         </li>
                         </ul>
                          ';
 $string['txthome4'] = '<H3>Accessibility :</H3>
-                        This website is optimised for the latest versions of Firefox and Chrome.  
+                        This website is optimised for the latest versions of Firefox and Chrome.
                         Remember to update your own Web browser.  You can also access the courses directly on your tablet.
                         ';

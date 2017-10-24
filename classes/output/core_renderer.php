@@ -44,7 +44,7 @@ defined('MOODLE_INTERNAL') || die;
   * Theme EAD UM core renderers.
   *
   * @package    theme_eadumboost
-  * @copyright  2017 Jonathan JUPIN
+  * @copyright  2017 Jonathan J.
   * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
   */
 
@@ -126,20 +126,18 @@ class core_renderer extends \theme_boost\output\core_renderer {
         $branchsort = 40000;
         $branch = $custommenu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
 
-        // sous branches.
-        $ssbranchtitle = $SSbranchlabel = get_string('assistanceEtu', 'theme_eadumboost');
-        $SSbranchurl = new moodle_url('/um_apps/faq/faq-connexion.html');
-        $branch->add($SSbranchlabel, $SSbranchurl, $ssbranchtitle);
+        // Sub branches.
+        $sbranchtitle = $sbranchlabel = get_string('assistanceEtu', 'theme_eadumboost');
+        $sbranchurl = new moodle_url('/um_apps/faq/faq-connexion.html');
+        $branch->add($sbranchlabel, $sbranchurl, $sbranchtitle);
 
-        $ssbranchtitle = $SSbranchlabel = get_string('serviceUni', 'theme_eadumboost');
-        $SSbranchurl = new moodle_url('/course/view.php?id=591&section=6');
-        $branch->add($SSbranchlabel, $SSbranchurl, $ssbranchtitle);
+        $sbranchtitle = $sbranchlabel = get_string('serviceUni', 'theme_eadumboost');
+        $sbranchurl = new moodle_url('/course/view.php?id=591&section=6');
+        $branch->add($sbranchlabel, $sbranchurl, $sbranchtitle);
 
-        $ssbranchtitle = $SSbranchlabel = get_string('methodologie', 'theme_eadumboost');
-        $SSbranchurl = new moodle_url('/course/view.php?id=591&section=2');
-        $branch->add($SSbranchlabel, $SSbranchurl, $ssbranchtitle);
-
-
+        $sbranchtitle = $sbranchlabel = get_string('methodologie', 'theme_eadumboost');
+        $sbranchurl = new moodle_url('/course/view.php?id=591&section=2');
+        $branch->add($sbranchlabel, $sbranchurl, $sbranchtitle);
 
         return parent::render_custom_menu($custommenu);
     }

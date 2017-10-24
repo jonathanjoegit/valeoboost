@@ -1,9 +1,24 @@
 <?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 /**
  * Strings for theme, language 'fr'
  *
  * @package    theme_eadumboost
- * @copyright  2017 Jonathan JUPIN - Université du Maine
+ * @copyright  2017 Jonathan J. - Université du Maine
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -27,7 +42,7 @@ $string['pluginname'] = 'EADUM (Boost)';
 $string['choosereadme'] = 'EADUM (Boost)- Theme developed by  Le Mans Université';
 
 
-/* custom : */
+// Custom.
 $string['noenrolments'] = 'Aucun cours';
 $string['FAQ'] = 'FAQ';
 $string['mail'] = 'Boîte mail UM';
@@ -39,7 +54,7 @@ $string['methodologie'] = 'Ressources méthodologiques';
 
 
 
-/* HOME */
+// Home.
 $string['sitetitle'] = 'A chacun son accès aux études supérieures';
 $string['connect'] = 'Se connecter';
 $string['watchvideo'] = 'Regarder la vidéo';
@@ -60,26 +75,25 @@ $string['txthome2'] = '<H3>Nos formations :</H3>
                         En formation initiale (étudiants) ou en reprise d\'études (salariés, demandeurs d\'emploi), nos cours en ligne sont disponibles à tout moment en fonction de votre projet individuel.
                         Entreprises ou professionnels, opter pour l\'e-learning vous permet de bénéficier d\'un dispositif s\'adaptant à vos contraintes organisationnelles et économiques pour une formation diplômante de qualité.
                         <br /><br />
-                        
-                        
+
+
                         <a href="http://www.univ-lemans.fr/fr/formation/enseignement_a_distance_ead.html">Consultez ici l\'ensemble des formations disponibles en cliquant ici.</a>
-    
+
     ';
 $string['txthome3'] = '<H3>Assistance :</H3>
                         Vous êtes ou devenez étudiant à distance et vous rencontrez une difficulté ? Nous sommes là pour vous aider !
                         <ul>
                         <li><a target="_blank" href="/moodle/um_apps/faq/faq-connexion.html">Consultez notre Foire Aux Questions (FAQ)</a></li>
                         <li>Contactez nous : <br />
-                        - par mail : 
+                        - par mail :
                         <a href="mailto:ead-assistance@univ-lemans.fr">ead-assistance@univ-lemans.fr</a> <i>(nous vous répondrons dans un délai maximum de 24h ouvrées)</i>
                          <br />
                          - par téléphone au <span style="color: #08C;">02 43 83 26 88</span> <em>(service disponible de septembre à mars)</em>
                         <br />
-                        
+
                         </li>
                         </ul>
                          ';
 $string['txthome4'] = '<H3>Accessibilité :</H3>
-                        Ce site web est optimisé pour les dernières mises à jour des navigateurs web Firefox et Chrome. 
+                        Ce site web est optimisé pour les dernières mises à jour des navigateurs web Firefox et Chrome.
                         Pensez à mettre à jour votre navigateur. Vous pouvez également y accéder depuis votre tablette et votre mobile. repri';
-

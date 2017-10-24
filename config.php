@@ -18,7 +18,7 @@
  * eadumboost config.
  *
  * @package    theme_eadumboost
- * @copyright  2017 Jonathan JUPIN - Université du Maine
+ * @copyright  2017 Jonathan J. - Université du Maine
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
