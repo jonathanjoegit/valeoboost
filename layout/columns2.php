@@ -51,11 +51,10 @@ $templatecontext = [
     'hasregionmainsettingsmenu' => !empty($regionmainsettingsmenu)
 ];
 
-// modif du nav-drawer
+//Mmodif du nav-drawer.
 theme_eadumboost_custom_nav_drawer($PAGE->navigation);
 
 
 
 $templatecontext['flatnavigation'] = $PAGE->flatnav;
 echo $OUTPUT->render_from_template('theme_eadumboost/columns2', $templatecontext);
-
