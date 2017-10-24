@@ -40,13 +40,13 @@ use pix_icon;
 
 defined('MOODLE_INTERNAL') || die;
 
-/**
-* Theme EAD UM core renderers.
-*
-* @package    theme_eadumboost
-* @copyright  2017 Jonathan JUPIN
-* @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
-*/
+ /**
+ * Theme EAD UM core renderers.
+ *
+ * @package    theme_eadumboost
+ * @copyright  2017 Jonathan JUPIN
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 
 class core_renderer extends \theme_boost\output\core_renderer
 {
@@ -113,9 +113,10 @@ class core_renderer extends \theme_boost\output\core_renderer
 
 
             // Si admin ou manager : afficher liste des cours
-            if (user_has_role_assignment($USER->id, 1) || is_siteadmin()) {
+            // Si l'utilisateur à accès à tous les cours et vois les cours cachés
+          	if (has_capability('moodle/course:view', context_course::instance($course->id))
+                && has_capability('moodle/course:viewhiddencourses', context_course::instance($course->id))) {
 
-                // test
                 $branchtitle = $branchlabel = "Tous les cours";
                 $branchurl = new moodle_url('/course/index.php');
                 $branchsort = 60000;
