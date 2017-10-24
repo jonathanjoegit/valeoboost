@@ -41,23 +41,21 @@ use pix_icon;
 defined('MOODLE_INTERNAL') || die;
 
  /**
- * Theme EAD UM core renderers.
- *
- * @package    theme_eadumboost
- * @copyright  2017 Jonathan JUPIN
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
+  * Theme EAD UM core renderers.
+  *
+  * @package    theme_eadumboost
+  * @copyright  2017 Jonathan JUPIN
+  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+  */
 
-class core_renderer extends \theme_boost\output\core_renderer
-{
+class core_renderer extends \theme_boost\output\core_renderer {
     /*
     * Overriding the custom_menu function ensures the custom menu is
     * always shown, even if no menu items are configured in the global
     * theme settings page.
     */
-    public function custom_menu($custommenuitems = '')
-    {
-        global $CFG, $PAGE, $USER;
+    public function custom_menu($custommenuitems = '') {
+        global $CFG, $PAGE;
 
         if (empty($custommenuitems) && !empty($CFG->custommenuitems)) {
             $custommenuitems = $CFG->custommenuitems;
@@ -65,7 +63,7 @@ class core_renderer extends \theme_boost\output\core_renderer
         $custommenu = new custom_menu($custommenuitems, current_language());
 
         // Custom :
-        // si on est sur une page du site (connecté)
+        // si on est sur une page du site (connecté).
         if ($PAGE->pagelayout != 'frontpage' && $PAGE->pagelayout != 'login') {
             // TDB + listes des cours :
             $branchtitle = $branchlabel = get_string('myhome');
@@ -85,20 +83,16 @@ class core_renderer extends \theme_boost\output\core_renderer
 
             // Retrieve courses and add them to the menu when they are visible.
             $numcourses = 0;
-            //$hasdisplayhiddenmycourses = \theme_essential\toolbox::get_setting('displayhiddenmycourses');
             if ($courses = enrol_get_my_courses(null, $sortorder . ' ASC')) {
                 foreach ($courses as $course) {
                     if ($course->visible) {
-                        $branch->add(
-                            '<span class="fa fa-graduation-cap"></span>'.format_string($course->fullname),
-                        new moodle_url('/course/view.php?id=' . $course->id),
-                            format_string($course->shortname)
+                        $branch->add('<span class="fa fa-graduation-cap"></span>'.format_string($course->fullname),
+                          new moodle_url('/course/view.php?id=' . $course->id), format_string($course->shortname)
                         );
                         $numcourses += 1;
-                    } elseif (has_capability('moodle/course:viewhiddencourses', context_course::instance($course->id)) /*&& $hasdisplayhiddenmycourses*/) {
+                    } else if (has_capability('moodle/course:viewhiddencourses', context_course::instance($course->id))) {
                         $branchtitle = format_string($course->shortname);
-                        $branchlabel = '<span class="dimmed_text">'/*.$this->getfontawesomemarkup('eye-slash')*/.
-                            format_string($course->fullname) . '</span>';
+                        $branchlabel = '<span class="dimmed_text">'.format_string($course->fullname) . '</span>';
                         $branchurl = new moodle_url('/course/view.php', array('id' => $course->id));
                         $branch->add($branchlabel, $branchurl, $branchtitle);
                         $numcourses += 1;
@@ -112,11 +106,10 @@ class core_renderer extends \theme_boost\output\core_renderer
 
 
 
-            // Si admin ou manager : afficher liste des cours
-            // Si l'utilisateur à accès à tous les cours et vois les cours cachés
+            // Si admin ou manager : afficher liste des cours.
+            // Si l'utilisateur à accès à tous les cours et vois les cours cachés.
           	if (has_capability('moodle/course:view', context_course::instance($course->id))
                 && has_capability('moodle/course:viewhiddencourses', context_course::instance($course->id))) {
-
                 $branchtitle = $branchlabel = "Tous les cours";
                 $branchurl = new moodle_url('/course/index.php');
                 $branchsort = 60000;
@@ -136,17 +129,17 @@ class core_renderer extends \theme_boost\output\core_renderer
         $branch = $custommenu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
 
         // sous branches :
-        $SSbranchtitle = $SSbranchlabel = get_string('assistanceEtu', 'theme_eadumboost');
+        $ssbranchtitle = $SSbranchlabel = get_string('assistanceEtu', 'theme_eadumboost');
         $SSbranchurl = new moodle_url('/um_apps/faq/faq-connexion.html');
-        $branch->add($SSbranchlabel, $SSbranchurl, $SSbranchtitle);
+        $branch->add($SSbranchlabel, $SSbranchurl, $ssbranchtitle);
 
-        $SSbranchtitle = $SSbranchlabel = get_string('serviceUni', 'theme_eadumboost');
+        $ssbranchtitle = $SSbranchlabel = get_string('serviceUni', 'theme_eadumboost');
         $SSbranchurl = new moodle_url('/course/view.php?id=591&section=6');
-        $branch->add($SSbranchlabel, $SSbranchurl, $SSbranchtitle);
+        $branch->add($SSbranchlabel, $SSbranchurl, $ssbranchtitle);
 
-        $SSbranchtitle = $SSbranchlabel = get_string('methodologie', 'theme_eadumboost');
+        $ssbranchtitle = $SSbranchlabel = get_string('methodologie', 'theme_eadumboost');
         $SSbranchurl = new moodle_url('/course/view.php?id=591&section=2');
-        $branch->add($SSbranchlabel, $SSbranchurl, $SSbranchtitle);
+        $branch->add($SSbranchlabel, $SSbranchurl, $ssbranchtitle);
 
 
 

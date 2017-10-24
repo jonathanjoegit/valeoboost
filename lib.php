@@ -73,7 +73,7 @@ function theme_eadumboost_get_main_scss_content($theme) {
 * 	 //doc NAVIGATION: https://docs.moodle.org/dev/Navigation_API#How_the_navigation_works
 */
 function theme_eadumboost_custom_nav_drawer(global_navigation $navigation) {
-	global $PAGE, $CFG, $COURSE, $USER;
+	global $PAGE, $CFG, $COURSE;
 	require_once ($CFG->libdir . '/completionlib.php');
 
 
