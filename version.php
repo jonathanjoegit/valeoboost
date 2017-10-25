@@ -29,6 +29,6 @@ $plugin->requires  = 2017050500;
 $plugin->component = 'theme_eadumboost';
 
 // This is a list of plugins, this plugin depends on (and their versions).
-$plugin->dependencies = ['
-  theme_boost' => '2017051500'
+$plugin->dependencies = [
+  'theme_boost' => '2017051500'
 ];
