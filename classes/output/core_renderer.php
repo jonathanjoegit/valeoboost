@@ -54,7 +54,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
     * always shown, even if no menu items are configured in the global
     * theme settings page.
     */
-    public function custom_menu($custommenuitems = '')     {
+    public function custom_menu($custommenuitems = '') {
         global $CFG, $PAGE;
 
         if (empty($custommenuitems) && !empty($CFG->custommenuitems)) {
@@ -87,12 +87,12 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 foreach ($courses as $course) {
                     if ($course->visible) {
                         $branch->add(
-                '<span class="fa fa-graduation-cap"></span>'.format_string($course->fullname),
-              new moodle_url('/course/view.php?id=' . $course->id),
-                format_string($course->shortname)
-            );
+                          '<span class="fa fa-graduation-cap"></span>'.format_string($course->fullname),
+                          new moodle_url('/course/view.php?id=' . $course->id),
+                          format_string($course->shortname)
+                        );
                         $numcourses += 1;
-                    } elseif (has_capability('moodle/course:viewhiddencourses', context_course::instance($course->id))) {
+                    } else if (has_capability('moodle/course:viewhiddencourses', context_course::instance($course->id))) {
                         $branchtitle = format_string($course->shortname);
                         $branchlabel = '<span class="dimmed_text">'.format_string($course->fullname) . '</span>';
                         $branchurl = new moodle_url('/course/view.php', array('id' => $course->id));
@@ -109,7 +109,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
             // Si admin ou manager : afficher liste des cours.
             // Si l'utilisateur à accès à tous les cours et vois les cours cachés.
             if (has_capability('moodle/course:view', context_course::instance($course->id))
-      && has_capability('moodle/course:viewhiddencourses', context_course::instance($course->id))) {
+            && has_capability('moodle/course:viewhiddencourses', context_course::instance($course->id))) {
                 $branchtitle = $branchlabel = "Tous les cours";
                 $branchurl = new moodle_url('/course/index.php');
                 $branchsort = 60000;
