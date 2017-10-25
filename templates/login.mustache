@@ -44,7 +44,7 @@
 
     {{{ output.standard_top_of_body_html }}}
     {{>theme_eadumboost/header}}
-    
+
 
     <div id="page" class="container-fluid">
         <div id="page-content" class="row">
@@ -65,48 +65,47 @@
 </html>
 {{#js}}
 require(['theme_boost/loader']);
-    
+
 require(['jquery', 'jqueryui'], function($, jqui) {
 
 // Utilisation de Jquery pour custom la page (on ne peut pas avec les renderer)
-   
+
     // change le texte de connexion (en toutes les langues)
     $('.loginpanel div').find('a').each(function(){
         $test= $(this).html();
         if($test == 'CAS users' || $test ==  'other users' || $test == 'Utilisateurs CAS' || $test == 'Autres utilisateurs' || $test == 'CAS-Nutzer/innen' || $test == 'Weitere Nutzer/innen'){
 
 
-            $(this).text( $(this).html().replace('CAS users','Université du Maine users') );
+            $(this).text( $(this).html().replace('CAS users','Le Mans Université users') );
             $(this).text( $(this).html().replace('other users','Other users, Université d\'Angers and Université de Tours') );
-           
-            
-            $(this).text( $(this).html().replace('Utilisateurs CAS','Utilisateurs de l\'Université du Maine') );
+
+
+            $(this).text( $(this).html().replace('Utilisateurs CAS','Utilisateurs de Le Mans Université') );
             $(this).text( $(this).html().replace('Autres utilisateurs','Autres utilisateurs, Université d\'Angers et Université de Tours') );
-            
-            $(this).text( $(this).html().replace('CAS-Nutzer/innen','Nutzer/in der Université du Maine ') );
+
+            $(this).text( $(this).html().replace('CAS-Nutzer/innen','Nutzer/in der Le Mans Université ') );
             $(this).text( $(this).html().replace('Weitere Nutzer/innen','Weitere Nutzer (Universität Angers/Tours)') );
-            
+
             $(this).css('font-size', '1.3em');
-			
-			
+
+
         }
     });
-   
+
     //Ajout d'une image pour le login form (1e page)
     $('.loginpanel').each(function() {
         $(this).prepend('{{# pix }} login_avatar, theme{{/ pix }}');
     });
-    
+
     //Ajout d'une image pour les utilisateurs d'angers
     $('.card-block .card-title H2').each(function() {
-		
-        $(this).html().replace('Première visite sur ce site ?','Nutzer/in der Université du Maine ') ;
-		
+
+        $(this).html().replace('Première visite sur ce site ?','Nutzer/in der Le Mans Université ') ;
+
         //$(this).prepend('{{# pix }} univ-angers, theme{{/ pix }}');
-	
-   	 
+
+
     });
 });
 
 	{{/js}}
-	

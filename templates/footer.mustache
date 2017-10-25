@@ -1,5 +1,5 @@
 <footer id="page-footer" class="p-y-1 bg-inverse">
-  
+
     <div class="container">
         <div id="course-footer">{{{ output.course_footer }}}</div>
 
@@ -7,15 +7,15 @@
 		    <div class="footerUM row">
 		        <div class="col-lg-4 hidden-md-down logoUmPrn">
 		            <a href="http://www.univ-lemans.fr/">
-						{{# pix }} logoUM, theme, Université du Maine{{/ pix }}
+						{{# pix }} logoUM, theme, Le Mans Université{{/ pix }}
 					</a>
 		            <a href="http://prn.univ-lemans.fr/">
-						{{# pix }} logoPRN, theme, Pôle Ressources Numériques de l'Université du Maine{{/ pix }}
+						{{# pix }} logoPRN, theme, Pôle Ressources Numériques Le Mans Université{{/ pix }}
 					</a>
-            
+
 		        </div>
-        
-        
+
+
 		        <div class="col-lg-4 footerdivEAD">
 					{{# pix }} logo80px, theme, EADUM{{/ pix }}
 		            <ul>
@@ -24,16 +24,16 @@
 						</li>
 
 		            </ul>
-            
+
 		        </div>
-        
+
 		        <div class="col-lg-4 textfooter ">
 		            <h5>{{# str }} support:, theme_eadumboost {{/ str }}</h5>
-                
+
 		            <ul>
 		                <li><a href="/moodle/um_apps/faq/faq-connexion.html" target="_blank">
 							{{# str }} assistanceEtu, theme_eadumboost {{/ str }}
-							
+
 						</a></li>
 		                <li><a href="/moodle/course/view.php?id=591&section=6" target="_blank">
 							{{# str }} serviceUni, theme_eadumboost {{/ str }}
@@ -51,7 +51,7 @@
 			<a href="http://webmail.univ-lemans.fr/">
 				{{# str }} mail, theme_eadumboost {{/ str }}
 			</a>
-           
+
         </div>
 
 
@@ -60,7 +60,7 @@
             <p class="helplink">{{{ output.page_doc_link }}}</p>
         {{/ output.page_doc_link }}
 
-       
+
         <nav class="nav navbar-nav hidden-lg-up">
             {{# output.custom_menu_flat }}
                 <ul class="list-unstyled p-t-1">
@@ -70,26 +70,25 @@
         </nav>
         {{{ output.standard_footer_html }}}
         {{{ output.standard_end_of_body_html }}}
-		
+
         <div class="col-md-12 hidden-lg-up logos-mobile">
             <a href="http://www.univ-lemans.fr/">
-				{{# pix }} logoUM, theme, Université du Maine{{/ pix }}
+				{{# pix }} logoUM, theme, Le Mans Université{{/ pix }}
 			</a>
             <a href="http://prn.univ-lemans.fr/">
-				{{# pix }} logoPRN, theme, Pôle Ressources Numériques de l'Université du Maine{{/ pix }}
+				{{# pix }} logoPRN, theme, Pôle Ressources Numériques Le Mans Université{{/ pix }}
 			</a>
-    
+
         </div>
-		
-		
+
+
     </div>
 </footer>
-  
+
 {{#js}}
 require(['jquery', 'jqueryui'], function($, jqui) {
     // add target blank @ "mail" menu
     $("header.navbar a[title='Boîte mail UM']").attr('target' ,'_blank');
      $("header.navbar a[title='Mailbox']").attr('target' ,'_blank');
-});  
+});
 {{/js}}
-	  

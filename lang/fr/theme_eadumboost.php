@@ -18,7 +18,7 @@
  * Strings for theme, language 'fr'
  *
  * @package    theme_eadumboost
- * @copyright  2017 Jonathan J. - Université du Maine
+ * @copyright  2017 Jonathan J. - Le Mans Université
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 

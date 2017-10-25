@@ -15,10 +15,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- *  THEME EADUM - Université du Maine
+ *  THEME EADUM - Le Mans Université
  *
  * @package    theme_eadumboost
- * @copyright  2017 Jonathan JUPIN - Université du Maine
+ * @copyright  2017 Jonathan J. - Le Mans Université
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 

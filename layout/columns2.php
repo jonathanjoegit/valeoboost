@@ -18,7 +18,7 @@
  * A two column layout for the eadumboost theme.
  *
  * @package   theme_eadumboost
- * @copyright 2016 Damyon Wiese
+ * @copyright 2017 Jonathan J.
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -51,7 +51,7 @@ $templatecontext = [
     'hasregionmainsettingsmenu' => !empty($regionmainsettingsmenu)
 ];
 
-//Mmodif du nav-drawer.
+// Modif du nav-drawer.
 theme_eadumboost_custom_nav_drawer($PAGE->navigation);
 
 

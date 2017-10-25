@@ -18,7 +18,7 @@
  * Strings for theme, language 'de'
  *
  * @package    theme_eadumboost
- * @copyright  2017 Jonathan J. - Université du Maine
+ * @copyright  2017 Jonathan J. - Le Mans Université
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -39,7 +39,7 @@ $string['region-side-pre'] = 'Right';
 
 $string['configtitle'] = 'EADUM';
 $string['pluginname'] = 'EADUM';
-$string['choosereadme'] = 'EADUM (Boost)- Theme developed by the Université du Maine';
+$string['choosereadme'] = 'EADUM (Boost)- Theme developed by the Le Mans Université';
 
 
 // Custom.
