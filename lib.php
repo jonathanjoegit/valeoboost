@@ -33,7 +33,7 @@ defined('MOODLE_INTERNAL') || die();
  * @param theme_config $theme The theme config object.
  * @return string
  */
-function theme_eadumboost_get_main_scss_content($theme){
+function theme_eadumboost_get_main_scss_content($theme) {
     global $CFG;
 
     $scss = '';
@@ -63,13 +63,12 @@ function theme_eadumboost_get_main_scss_content($theme){
 }
 
 /**
-* Modification du Nav-drawer de Moodle (appelé dans les layouts)
-* 	 //doc NAVIGATION: https://docs.moodle.org/dev/Navigation_API#How_the_navigation_works
-*/
-function theme_eadumboost_custom_nav_drawer(global_navigation $navigation){
+ * Modification du Nav-drawer de Moodle (appelé dans les layouts)
+ * //doc NAVIGATION: https://docs.moodle.org/dev/Navigation_API#How_the_navigation_works
+ */
+function theme_eadumboost_custom_nav_drawer(global_navigation $navigation) {
     global $PAGE, $CFG, $COURSE;
     require_once($CFG->libdir . '/completionlib.php');
-
 
     // Enlever "Home".
     if ($homenode = $navigation->find('home', global_navigation::TYPE_ROOTNODE)) {
@@ -85,16 +84,19 @@ function theme_eadumboost_custom_nav_drawer(global_navigation $navigation){
         // S'il y a des activités.
         $completion = new completion_info($COURSE);
         $activities = $completion->get_activities();
-        if (count($activities)>0) {
+        if (count($activities) > 0) {
             // On récupère le noeud du cours (cours + section + ...).
             $coursenode = $PAGE->navigation->find($COURSE->id, navigation_node::TYPE_COURSE);
             // Si la navigation contient des items.
             if ($coursenode && $coursenode->has_children()) {
 
                 // On créer un noeud et on utilise le add de la classe navigation_node_collection pour le ranger.
-                $url = new moodle_url($CFG->wwwroot.'/report/tuteur/index.php', array('course'=>$COURSE->id));
-                $nodereport = navigation_node::create("Rapport Tuteur", $url, navigation_node::TYPE_SETTING, "rapporttuteur", "rapporttuteur");
-                /* signature fonc : public static function create($text, $action=null, $type=self::TYPE_CUSTOM, $shorttext=null, $key=null, pix_icon $icon=null) {*/
+                $url = new moodle_url($CFG->wwwroot.'/report/tuteur/index.php', array('course' => $COURSE->id));
+                $nodereport = navigation_node::create(
+                  "Rapport Tuteur", $url, navigation_node::TYPE_SETTING, "rapporttuteur", "rapporttuteur"
+                );
+                // Signature create($text, $action=null, $type=self::TYPE_CUSTOM, $shorttext=null, $key=null, pix_icon $icon=null).
+
                 // On check s'il y a le noeud "grades", si oui on le met en dessous (sinon à la fin).
                 if ($PAGE->navigation->find("grades", navigation_node::TYPE_SETTING)) {
                     $node = $coursenode->children->add($nodereport, "grades");
@@ -114,9 +116,10 @@ function theme_eadumboost_custom_nav_drawer(global_navigation $navigation){
         // Si la navigation contient des items.
         if ($coursenode && $coursenode->has_children()) {
             // On créer un noeud et on utilise le add de la classe navigation_node_collection pour le ranger.
-            $url = new moodle_url($CFG->wwwroot.'/enrol/users.php', array('id'=>$COURSE->id));
-            $newnode = navigation_node::create(get_string('enrolusers', 'enrol'), $url, navigation_node::TYPE_SETTING, "enrolusers", "enrolusers");
-            /* signature fonc : public static function create($text, $action=null, $type=self::TYPE_CUSTOM, $shorttext=null, $key=null, pix_icon $icon=null) {*/
+            $url = new moodle_url($CFG->wwwroot.'/enrol/users.php', array('id' => $COURSE->id));
+            $newnode = navigation_node::create(
+              get_string('enrolusers', 'enrol'), $url, navigation_node::TYPE_SETTING, "enrolusers", "enrolusers"
+            );
 
             // On check s'il y a le noeud "participants", si oui on le met en dessous (sinon à la fin).
             if ($PAGE->navigation->find("participants", navigation_node::TYPE_CONTAINER)) {
