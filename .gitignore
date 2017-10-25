@@ -1,4 +1,4 @@
 
 
 # pas de fichier mac :
-*.DS_STORE
+.DS_Store
