@@ -33,8 +33,7 @@ defined('MOODLE_INTERNAL') || die();
  * @param theme_config $theme The theme config object.
  * @return string
  */
-function theme_eadumboost_get_main_scss_content($theme)
-{
+function theme_eadumboost_get_main_scss_content($theme) {
     global $CFG;
 
     // Safety fallback - maybe new installs etc.
@@ -48,7 +47,7 @@ function theme_eadumboost_get_main_scss_content($theme)
     $value = $theme->settings->platform_env;
     if ($value == "Pre-Production") {
         $post .= file_get_contents($CFG->themedir . '/eadumboost/scss/extra/env_preproduction.scss');
-    } elseif ($value == "Test") {
+    } else if ($value == "Test") {
         $post .= file_get_contents($CFG->themedir . '/eadumboost/scss/extra/env_test.scss');
     }
 
@@ -60,8 +59,7 @@ function theme_eadumboost_get_main_scss_content($theme)
  * Modification du Nav-drawer de Moodle (appelé dans les layouts)
  * //doc NAVIGATION: https://docs.moodle.org/dev/Navigation_API#How_the_navigation_works
  */
-function theme_eadumboost_custom_nav_drawer(global_navigation $navigation)
-{
+function theme_eadumboost_custom_nav_drawer(global_navigation $navigation) {
     global $PAGE, $CFG, $COURSE;
     require_once($CFG->libdir . '/completionlib.php');
 
