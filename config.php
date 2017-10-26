@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * eadumboost config.
+ * Theme config.
  *
  * @package    theme_eadumboost
  * @copyright  2017 Jonathan J. - Le Mans Université

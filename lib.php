@@ -33,30 +33,24 @@ defined('MOODLE_INTERNAL') || die();
  * @param theme_config $theme The theme config object.
  * @return string
  */
-function theme_eadumboost_get_main_scss_content($theme) {
+function theme_eadumboost_get_main_scss_content($theme)
+{
     global $CFG;
 
+    // Safety fallback - maybe new installs etc.
     $scss = '';
-    $filename = !empty($theme->settings->preset) ? $theme->settings->preset : null;
-    $fs = get_file_storage();
-
-    $context = context_system::instance();
-    if ($filename == 'default.scss') {
-        // We still load the default preset files directly from the boost theme. No sense in duplicating them.
-        $scss .= file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/default.scss');
-    } else if ($filename == 'plain.scss') {
-        // We still load the default preset files directly from the boost theme. No sense in duplicating them.
-        $scss .= file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/plain.scss');
-    } else if ($filename && ($presetfile = $fs->get_file($context->id, 'theme_eadumboost', 'preset', 0, '/', $filename))) {
-        // This preset file was fetched from the file area for theme_eadumboost and not theme_boost (see the line above).
-        $scss .= $presetfile->get_content();
-    } else {
-        // Safety fallback - maybe new installs etc.
-        $scss .= file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/default.scss');
-    }
+    $scss .= file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/default.scss');
 
     // Post (style.scss) CSS - this is loaded AFTER the main scss but before the extra scss from the setting.
     $post = file_get_contents($CFG->themedir . '/eadumboost/scss/styles.scss');
+
+    // Add custom styles for Test & Pre-production environment (theme setting).
+    $value = $theme->settings->platform_env;
+    if ($value == "Pre-Production") {
+        $post .= file_get_contents($CFG->themedir . '/eadumboost/scss/extra/env_preproduction.scss');
+    } elseif ($value == "Test") {
+        $post .= file_get_contents($CFG->themedir . '/eadumboost/scss/extra/env_test.scss');
+    }
 
     // Combine them together.
     return $scss . "\n" . $post;
@@ -66,7 +60,8 @@ function theme_eadumboost_get_main_scss_content($theme) {
  * Modification du Nav-drawer de Moodle (appelé dans les layouts)
  * //doc NAVIGATION: https://docs.moodle.org/dev/Navigation_API#How_the_navigation_works
  */
-function theme_eadumboost_custom_nav_drawer(global_navigation $navigation) {
+function theme_eadumboost_custom_nav_drawer(global_navigation $navigation)
+{
     global $PAGE, $CFG, $COURSE;
     require_once($CFG->libdir . '/completionlib.php');
 
@@ -93,7 +88,11 @@ function theme_eadumboost_custom_nav_drawer(global_navigation $navigation) {
                 // On créer un noeud et on utilise le add de la classe navigation_node_collection pour le ranger.
                 $url = new moodle_url($CFG->wwwroot.'/report/tuteur/index.php', array('course' => $COURSE->id));
                 $nodereport = navigation_node::create(
-                  "Rapport Tuteur", $url, navigation_node::TYPE_SETTING, "rapporttuteur", "rapporttuteur"
+                  "Rapport Tuteur",
+                    $url,
+                    navigation_node::TYPE_SETTING,
+                    "rapporttuteur",
+                    "rapporttuteur"
                 );
                 // Signature create($text, $action=null, $type=self::TYPE_CUSTOM, $shorttext=null, $key=null, pix_icon $icon=null).
 
@@ -118,7 +117,11 @@ function theme_eadumboost_custom_nav_drawer(global_navigation $navigation) {
             // On créer un noeud et on utilise le add de la classe navigation_node_collection pour le ranger.
             $url = new moodle_url($CFG->wwwroot.'/enrol/users.php', array('id' => $COURSE->id));
             $newnode = navigation_node::create(
-              get_string('enrolusers', 'enrol'), $url, navigation_node::TYPE_SETTING, "enrolusers", "enrolusers"
+              get_string('enrolusers', 'enrol'),
+                $url,
+                navigation_node::TYPE_SETTING,
+                "enrolusers",
+                "enrolusers"
             );
 
             // On check s'il y a le noeud "participants", si oui on le met en dessous (sinon à la fin).

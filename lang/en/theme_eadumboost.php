@@ -45,7 +45,6 @@ $string['configtitle'] = 'EADUM (Boost)';
 $string['pluginname'] = 'EADUM (Boost)';
 $string['choosereadme'] = 'EADUM (Boost)- Theme developed by the Le Mans Université';
 
-
 // Custom.
 $string['noenrolments'] = 'No enrolments';
 $string['FAQ'] = 'FAQ';
@@ -55,7 +54,6 @@ $string['support:'] = 'Help :';
 $string['assistanceEtu'] = 'Student helpdesk';
 $string['serviceUni'] = 'University Services';
 $string['methodologie'] = 'Methodological resources';
-
 
 // Home.
 $string['sitetitle'] = 'Your individual access to further and higher education';
@@ -93,3 +91,8 @@ $string['txthome4'] = '<H3>Accessibility :</H3>
                         This website is optimised for the latest versions of Firefox and Chrome.
                         Remember to update your own Web browser.  You can also access the courses directly on your tablet.
                         ';
+// Admin.
+$string['configtitle'] = 'Config title';
+$string['generalsettings'] = 'General Settings';
+$string['platform_env'] = 'Platform environment';
+$string['platform_env_desc'] = 'Platform environment selection. This will change the theme syle in "Test" and "Pre-production" to show it\'s not "Production" platform';
