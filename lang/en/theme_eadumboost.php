@@ -95,4 +95,4 @@ $string['txthome4'] = '<H3>Accessibility :</H3>
 $string['configtitle'] = 'Config title';
 $string['generalsettings'] = 'General Settings';
 $string['platform_env'] = 'Platform environment';
-$string['platform_env_desc'] = 'Platform environment selection. This will change the theme syle in "Test" and "Pre-production" to show it\'s not "Production" platform';
+$string['platform_env_desc'] = 'Platform environment selection. This selection changes the theme logo "EADUM" in "Test" and "Pre-production" to show it\'s not the "Production" platform';
