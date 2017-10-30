@@ -109,7 +109,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
             // Si admin ou manager : afficher liste des cours.
             // Si l'utilisateur à accès à tous les cours et vois les cours cachés.
             if (has_capability('moodle/course:view', $this->page->context)
-            && has_capability('moodle/course:viewhiddencourses',$this->page->context)) {
+            && has_capability('moodle/course:viewhiddencourses', $this->page->context)) {
                 $branchtitle = $branchlabel = "Tous les cours";
                 $branchurl = new moodle_url('/course/index.php');
                 $branchsort = 60000;
