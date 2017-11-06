@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace theme_eadumboost\output;
+namespace theme_eadumboostvaleo\output;
 
 use coding_exception;
 use html_writer;
@@ -43,7 +43,7 @@ defined('MOODLE_INTERNAL') || die;
 /**
  * Theme EAD UM core renderers.
  *
- * @package    theme_eadumboost
+ * @package    theme_eadumboostvaleo
  * @copyright  2017 Jonathan J.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -102,7 +102,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 }
             }
             if ($numcourses == 0 || empty($courses)) {
-                $noenrolments = get_string('noenrolments', 'theme_eadumboost');
+                $noenrolments = get_string('noenrolments', 'theme_eadumboostvaleo');
                 $branch->add('<em>' . $noenrolments . '</em>', new moodle_url(''), $noenrolments);
             }
 
@@ -117,27 +117,27 @@ class core_renderer extends \theme_boost\output\core_renderer {
             }
 
             // Mail.
-            $branchtitle = $branchlabel = get_string('mail', 'theme_eadumboost');
+            $branchtitle = $branchlabel = get_string('mail', 'theme_eadumboostvaleo');
             $branchurl = new moodle_url('http://webmail.univ-lemans.fr/');
             $branchsort = 50000;
             $custommenu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
         }
         // Aide.
-        $branchtitle = $branchlabel = get_string('support', 'theme_eadumboost');
+        $branchtitle = $branchlabel = get_string('support', 'theme_eadumboostvaleo');
         $branchurl = new moodle_url('');
         $branchsort = 40000;
         $branch = $custommenu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
 
         // Sub branches.
-        $sbranchtitle = $sbranchlabel = get_string('assistanceEtu', 'theme_eadumboost');
+        $sbranchtitle = $sbranchlabel = get_string('assistanceEtu', 'theme_eadumboostvaleo');
         $sbranchurl = new moodle_url('/um_apps/faq/faq-connexion.html');
         $branch->add($sbranchlabel, $sbranchurl, $sbranchtitle);
 
-        $sbranchtitle = $sbranchlabel = get_string('serviceUni', 'theme_eadumboost');
+        $sbranchtitle = $sbranchlabel = get_string('serviceUni', 'theme_eadumboostvaleo');
         $sbranchurl = new moodle_url('/course/view.php?id=591&section=6');
         $branch->add($sbranchlabel, $sbranchurl, $sbranchtitle);
 
-        $sbranchtitle = $sbranchlabel = get_string('methodologie', 'theme_eadumboost');
+        $sbranchtitle = $sbranchlabel = get_string('methodologie', 'theme_eadumboostvaleo');
         $sbranchurl = new moodle_url('/course/view.php?id=591&section=2');
         $branch->add($sbranchlabel, $sbranchurl, $sbranchtitle);
 

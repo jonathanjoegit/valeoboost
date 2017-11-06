@@ -17,17 +17,17 @@
 /**
  *  THEME EADUM - Le Mans Université
  *
- * @package    theme_eadumboost
+ * @package    theme_eadumboostvaleo
  * @copyright  2017 Jonathan J. - Le Mans Université
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2017103000;
+$plugin->version   = 2017110600;
 $plugin->requires  = 2017050500;
-$plugin->release  = 'Thème EADUM v1.0.2';
-$plugin->component = 'theme_eadumboost';
+$plugin->release  = 'Thème EADUM Valéo v1.0.0';
+$plugin->component = 'theme_eadumboostvaleo';
 
 // This is a list of plugins, this plugin depends on (and their versions).
 $plugin->dependencies = [

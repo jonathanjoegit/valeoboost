@@ -17,7 +17,7 @@
 /**
  * Theme settings.
  *
- * @package    theme_eadumboost
+ * @package    theme_eadumboostvaleo
  * @copyright  2017 Jonathan J. - Le Mans Université
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -25,13 +25,13 @@
 defined('MOODLE_INTERNAL') || die();
 
 if ($ADMIN->fulltree) {
-    $settings = new theme_boost_admin_settingspage_tabs('themesettingeadumboost', get_string('configtitle', 'theme_eadumboost'));
-    $page = new admin_settingpage('theme_eadumboost_general', get_string('generalsettings', 'theme_eadumboost'));
+    $settings = new theme_boost_admin_settingspage_tabs('themesettingeadumboostvaleo', get_string('configtitle', 'theme_eadumboostvaleo'));
+    $page = new admin_settingpage('theme_eadumboostvaleo_general', get_string('generalsettings', 'theme_eadumboostvaleo'));
 
     // Set plateform environment (to have extra CSS for test & pre prod).
-    $name = 'theme_eadumboost/platform_env';
-    $title = get_string('platform_env', 'theme_eadumboost');
-    $description = get_string('platform_env_desc', 'theme_eadumboost');
+    $name = 'theme_eadumboostvaleo/platform_env';
+    $title = get_string('platform_env', 'theme_eadumboostvaleo');
+    $description = get_string('platform_env_desc', 'theme_eadumboostvaleo');
     $default = 'Production';
     $choices = array(
       'Production' => 'Production',

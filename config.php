@@ -17,14 +17,14 @@
 /**
  * Theme config.
  *
- * @package    theme_eadumboost
+ * @package    theme_eadumboostvaleo
  * @copyright  2017 Jonathan J. - Le Mans Université
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$THEME->name = 'eadumboost';
+$THEME->name = 'eadumboostvaleo';
 $THEME->parents = ['boost'];
 
 $THEME->sheets = [];
@@ -35,7 +35,7 @@ $THEME->requiredblocks = '';
 $THEME->addblockposition = BLOCK_ADDBLOCK_POSITION_FLATNAV;
 
 $THEME->scss = function($theme) {
-    return theme_eadumboost_get_main_scss_content($theme);
+    return theme_eadumboostvaleo_get_main_scss_content($theme);
 };
 
 $THEME->layouts = [

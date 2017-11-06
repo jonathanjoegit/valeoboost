@@ -17,7 +17,7 @@
 /**
  * A one column layout for the boost theme.
  *
- * @package   theme_eadumboost
+ * @package   theme_eadumboostvaleo
  * @copyright 2017 Jonathan J.
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -33,4 +33,4 @@ $templatecontext = [
     'loginlink' => new moodle_url('/login/')
 ];
 
-echo $OUTPUT->render_from_template('theme_eadumboost/home', $templatecontext);
+echo $OUTPUT->render_from_template('theme_eadumboostvaleo/home', $templatecontext);

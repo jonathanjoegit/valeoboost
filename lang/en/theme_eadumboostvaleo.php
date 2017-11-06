@@ -17,7 +17,7 @@
 /**
  * Strings for theme, language 'en'
  *
- * @package    theme_eadumboost
+ * @package    theme_eadumboostvaleo
  * @copyright  2017 Jonathan J. - Le Mans Université
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -41,9 +41,9 @@ $string['rawscsspre'] = 'Raw initial SCSS';
 $string['rawscsspre_desc'] = 'In this field you can provide initialising SCSS code, it will be injected before everything else. Most of the time you will use this setting to define variables.';
 $string['region-side-pre'] = 'Right';
 
-$string['configtitle'] = 'EADUM (Boost)';
-$string['pluginname'] = 'EADUM (Boost)';
-$string['choosereadme'] = 'EADUM (Boost)- Theme developed by the Le Mans Université';
+$string['configtitle'] = 'EADUM (Boost) Valéo';
+$string['pluginname'] = 'EADUM (Boost Valéo)';
+$string['choosereadme'] = 'EADUM (Boost) for Valéo- Theme developed by the Le Mans Université';
 
 // Custom.
 $string['noenrolments'] = 'No enrolments';

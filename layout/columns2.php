@@ -15,9 +15,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * A two column layout for the eadumboost theme.
+ * A two column layout for the eadumboostvaleo theme.
  *
- * @package   theme_eadumboost
+ * @package   theme_eadumboostvaleo
  * @copyright 2017 Jonathan J.
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -52,9 +52,9 @@ $templatecontext = [
 ];
 
 // Modif du nav-drawer.
-theme_eadumboost_custom_nav_drawer($PAGE->navigation);
+theme_eadumboostvaleo_custom_nav_drawer($PAGE->navigation);
 
 
 
 $templatecontext['flatnavigation'] = $PAGE->flatnav;
-echo $OUTPUT->render_from_template('theme_eadumboost/columns2', $templatecontext);
+echo $OUTPUT->render_from_template('theme_eadumboostvaleo/columns2', $templatecontext);
