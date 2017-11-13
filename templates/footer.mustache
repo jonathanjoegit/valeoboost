@@ -7,11 +7,11 @@
     <div class="footerUM row">
       <div class="col-lg-4 hidden-md-down logoUmPrn">
         <a href="http://www.univ-lemans.fr/">
-						{{# pix }} logoUM, theme, Le Mans Université{{/ pix }}
-					</a>
+            {{# pix }} logoUM, theme, Le Mans Université{{/ pix }}
+          </a>
         <a href="http://prn.univ-lemans.fr/">
-						{{# pix }} logoPRN, theme, Pôle Ressources Numériques Le Mans Université{{/ pix }}
-					</a>
+            {{# pix }} logoPRN, theme, Pôle Ressources Numériques Le Mans Université{{/ pix }}
+          </a>
 
       </div>
 
@@ -31,10 +31,10 @@
 
       <div class="col-lg-4 textfooter ">
 
-						{{# pix }} valeo, theme, Valéo{{/ pix }}
+        {{# pix }} valeo, theme, Valéo{{/ pix }}
 
 
-						{{# pix }} lm_acoustique, theme, Le Mans Acoustique{{/ pix }}
+        {{# pix }} lm_acoustique, theme, Le Mans Acoustique{{/ pix }}
 
       </div>
     </div>
@@ -43,8 +43,8 @@
     <div class="col-md-12 hidden-lg-up logos-mobile">
       <br />
       <a href="http://webmail.univ-lemans.fr/">
-				{{# str }} mail, theme_eadumboostvaleo {{/ str }}
-			</a>
+        {{# str }} mail, theme_eadumboostvaleo {{/ str }}
+      </a>
 
     </div>
 
@@ -67,11 +67,11 @@
 
     <div class="col-md-12 hidden-lg-up logos-mobile">
       <a href="http://www.univ-lemans.fr/">
-				{{# pix }} logoUM, theme, Le Mans Université{{/ pix }}
-			</a>
+        {{# pix }} logoUM, theme, Le Mans Université{{/ pix }}
+      </a>
       <a href="http://prn.univ-lemans.fr/">
-				{{# pix }} logoPRN, theme, Pôle Ressources Numériques Le Mans Université{{/ pix }}
-			</a>
+        {{# pix }} logoPRN, theme, Pôle Ressources Numériques Le Mans Université{{/ pix }}
+      </a>
 
     </div>
 
@@ -80,5 +80,9 @@
 </footer>
 
 {{#js}}
-  require(['jquery', 'jqueryui'], function($, jqui) { // add target blank @ "mail" menu $("header.navbar a[title='Boîte mail UM']").attr('target' ,'_blank'); $("header.navbar a[title='Mailbox']").attr('target' ,'_blank'); });
+/* add target blank @ "mail" menu */
+  require(['jquery', 'jqueryui'], function($, jqui) {
+    $("header.navbar a[title='Boîte mail UM']").attr('target' ,'_blank');
+    $("header.navbar a[title='Mailbox']").attr('target' ,'_blank');
+  });
 {{/js}}
