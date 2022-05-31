@@ -18,11 +18,13 @@
  * Theme functions.
  *
  * @package    theme_valeoboost
- * @copyright  2021 Jonathan J. - Le Mans Université
+ * @copyright  2022 Jonathan J. - Le Mans Université
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
+
+require_once($CFG->dirroot.'/theme/boost/lib.php');
 
 
 /**
@@ -34,35 +36,28 @@ defined('MOODLE_INTERNAL') || die();
 function theme_valeoboost_get_main_scss_content($theme) {
     global $CFG;
 
-    $scss = '';
-    $filename = !empty($theme->settings->preset) ? $theme->settings->preset : null;
-    $fs = get_file_storage();
-
-    $context = context_system::instance();
-    if ($filename == 'default.scss') {
-        $scss .= file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/default.scss');
-    } else if ($filename == 'plain.scss') {
-        $scss .= file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/plain.scss');
-    } else if ($filename && ($presetfile = $fs->get_file($context->id, 'theme_boost', 'preset', 0, '/', $filename))) {
-        $scss .= $presetfile->get_content();
-    } else {
-        // Safety fallback - maybe new installs etc.
-        $scss .= file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/default.scss');
+    // get the main css of the parent theme_boost
+    static $boosttheme = null;
+    if (empty($boosttheme)) {
+        $boosttheme = theme_config::load('boost'); // Needs to be the Boost theme so that we get its settings.
     }
+    $scss = theme_boost_get_main_scss_content($boosttheme);
 
     // Add theme custom scss.
-    $post = file_get_contents($CFG->themedir . '/valeoboost/scss/styles.scss');
+    $custom = file_get_contents($CFG->themedir . '/valeoboost/scss/styles.scss');
 
     // Add custom styles for Test & Pre-production environment (theme setting).
     $value = $theme->settings->platform_env;
     if ($value == "Pre-Production") {
-        $post .= file_get_contents($CFG->themedir . '/valeoboost/scss/extra/env_preproduction.scss');
+        $custom .= file_get_contents($CFG->themedir . '/valeoboost/scss/extra/env_preproduction.scss');
     } else if ($value == "Test") {
-        $post .= file_get_contents($CFG->themedir . '/valeoboost/scss/extra/env_test.scss');
+        $custom .= file_get_contents($CFG->themedir . '/valeoboost/scss/extra/env_test.scss');
+    } else if ($value == "Test-annualisation") {
+        $custom .= file_get_contents($CFG->themedir . '/valeoboost/scss/extra/env_testannualisation.scss');
     }
 
     // Combine them together.
-    return $scss . "\n" . $post;
+    return $scss . "\n" . $custom;
 }
 
 
@@ -82,7 +77,7 @@ function theme_valeoboost_extend_navigation($navigation) {
     // Enlever "Privat files".
     // Fait en CSS (display:none;) sinon c'est un peu galère (à voir plus tard).
 
-    // Aajouter plugin "tuteur".
+    // Add plugin "tuteur".
     // Vérifier si l'user à le droit d'afficher le rapport Tuteur.
     $context = $PAGE->context;
     if (has_capability('report/tuteur:view', $context)) {
@@ -105,8 +100,8 @@ function theme_valeoboost_extend_navigation($navigation) {
                     "rapporttuteur",
                     new pix_icon('i/report', 'rapporttuteur')
                 );
-                // Signature create($text, $action=null, $type=self::TYPE_CUSTOM, $shorttext=null, $key=null, pix_icon $icon=null).
 
+                // Function signature : create($text, $action=null, $type=self::TYPE_CUSTOM, $shorttext=null, $key=null, pix_icon $icon=null).
                 // On check s'il y a le noeud "grades", si oui on le met en dessous (sinon à la fin).
                 if ($PAGE->navigation->find("grades", navigation_node::TYPE_SETTING)) {
                     $node = $coursenode->children->add($nodereport, "grades");
@@ -117,33 +112,29 @@ function theme_valeoboost_extend_navigation($navigation) {
         }
     }
 
-    // ISSUE : the page "enrol user" doesnt not exist any more (now only with a pop-up).
-    // Ajouter "inscrire des utilisateurs" pour les admins.
-    // Vérifier si l'user à le droit d'inscrire des utilisateurs (donc d'accèder à cette page).
-    /*
-    $context = $PAGE->context;
-    if (has_capability('enrol/manual:enrol', $context)) {
-        // On récupère le noeud du cours (cours + section + ...).
-        $coursenode = $PAGE->navigation->find($COURSE->id, navigation_node::TYPE_COURSE);
-        // Si la navigation contient des items.
-        if ($coursenode && $coursenode->has_children()) {
-            // On créer un noeud et on utilise le add de la classe navigation_node_collection pour le ranger.
-            $url = new moodle_url($CFG->wwwroot.'/enrol/users.php', array('id' => $COURSE->id));
-            $newnode = navigation_node::create(
-                get_string('enrolusers', 'enrol'),
-                $url,
-                navigation_node::TYPE_SETTING,
-                "enrolusers",
-                "enrolusers",
-                new pix_icon('i/enrolusers', 'enrolusers')
-            );
+    // Add edition mode for admin (to save time).
+    if ($PAGE->user_allowed_editing() && $PAGE->pagelayout == 'course') {
+        $url = new moodle_url($PAGE->url);
+        $url->param('sesskey', sesskey());
+        $title = get_string('turneditingoff', 'core');
 
-            // On check s'il y a le noeud "participants", si oui on le met en dessous (sinon à la fin).
-            if ($PAGE->navigation->find("participants", navigation_node::TYPE_CONTAINER)) {
-                $node = $coursenode->children->add($newnode, "participants");
-            } else { // Sinon à la fin du noeud.
-                $node = $coursenode->children->add($newnode);
-            }
+        if ($PAGE->user_is_editing()) {
+            $url->param('edit', 'off');
+            $title = get_string('turneditingoff', 'core');
+        } else {
+            $url->param('edit', 'on');
+            $title = get_string('turneditingon', 'core');
         }
-    }*/
+        $nodeedit = navigation_node::create(
+            $title,
+            $url,
+            navigation_node::TYPE_SETTING,
+            $title,
+            $title,
+            new pix_icon('i/edit', 'turneditingon')
+        );
+        $coursenode = $PAGE->navigation->find($COURSE->id, navigation_node::TYPE_COURSE);
+        $node = $coursenode->children->add($nodeedit);
+    }
+
 }

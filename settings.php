@@ -18,17 +18,19 @@
  * Theme settings.
  *
  * @package    theme_valeoboost
- * @copyright  2020 Jonathan J. - Le Mans Université
+ * @copyright  2022 Jonathan J. - Le Mans Université
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
 if ($ADMIN->fulltree) {
+
+    // Boost provides a nice setting page which splits settings onto separate tabs. We want to use it here.
     $settings = new theme_boost_admin_settingspage_tabs('themesettingvaleoboost', get_string('configtitle', 'theme_boost'));
     $page = new admin_settingpage('theme_boost_general', get_string('generalsettings', 'theme_boost'));
 
-    // Set plateform environment (to have extra CSS for test & pre prod).
+    // Set plateform EADUM environment (to have extra CSS for test & pre prod).
     $name = 'theme_valeoboost/platform_env';
     $title = get_string('platform_env', 'theme_valeoboost');
     $description = get_string('platform_env_desc', 'theme_valeoboost');
@@ -36,6 +38,7 @@ if ($ADMIN->fulltree) {
     $choices = array(
         'Production' => 'Production',
         'Pre-Production' => 'Pre-Production',
+        'Test-annualisation' => 'Annualisation',
         'Test' => 'Test'
     );
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);

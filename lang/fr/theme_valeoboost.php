@@ -18,11 +18,11 @@
  * Strings for theme, language 'fr'
  *
  * @package    theme_valeoboost
- * @copyright  2020 Jonathan J. - Le Mans Université
+ * @copyright  2022 Jonathan J. - Le Mans Université
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'VALEOBOOST';
+$string['pluginname'] = 'VALEO boost';
 $string['choosereadme'] = 'Theme VALEOBOOST is a child theme of Boost for Le Mans Université';
 $string['region-side-pre'] = 'region-side-pre';
 

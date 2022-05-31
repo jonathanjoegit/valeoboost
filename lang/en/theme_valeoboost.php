@@ -22,7 +22,7 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'VALEOBOOST';
+$string['pluginname'] = 'VALEO boost';
 $string['choosereadme'] = 'Theme VALEOBOOST is a child theme of Boost for Le Mans Université';
 $string['region-side-pre'] = 'region-side-pre';
 
