@@ -1,0 +1,39 @@
+/** Dashboard PAGE
+-------------------------*/
+
+// boutton for All the courses page
+.btn-courses {
+    max-width: 450px;
+    margin: 20px auto;
+    padding: 12px;
+
+    cursor: pointer;
+    text-align: center;
+
+    border: 2px solid $whiteText;
+    border-radius: 8px;
+    background: $themeSpecialColor1;
+    &:hover {
+        background: darken($themeSpecialColor1, 5%);
+    }
+    a {
+        font-size: 22px;
+        font-weight: 500;
+
+        text-transform: uppercase;
+
+        color: $whiteText;
+        &:hover {
+            text-decoration: none;
+
+            color: $whiteText;
+        }
+    }
+}
+
+/*
+.btn-courses a:link,
+.btn-courses a:visited {
+  color: $whiteText;
+}
+*/

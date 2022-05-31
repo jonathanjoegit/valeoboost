@@ -44,7 +44,11 @@
            <input type="checkbox" name="sendstudentnotifications"
                   {{#defaultsendnotifications}}checked="checked"{{/defaultsendnotifications}} />
     </label>
+    {{#helpicon}}
+        {{>core/help_icon}}
+    {{/helpicon}}
     <button type="submit" class="btn btn-primary" name="savechanges">{{#str}}savechanges{{/str}}</button>
+    <button type="submit" class="btn btn-primary" name="saveandshownext">{{#str}}saveandnext{{/str}}</button>
     <button type="submit" class="btn btn-secondary" name="resetbutton">{{#str}}reset{{/str}}</button>
 </form>
 {{#js}}
@@ -52,17 +56,21 @@ require(['mod_assign/grading_actions'], function(GradingActions) {
     new GradingActions('[data-region="grade-actions"]');
 });
 
+// ADD jjupin (force the default view).
 require(['jquery', 'jqueryui'], function($, jqui) {
-	//Change the default view of the assign grader page (by default : collapse-review-panel)
-	// if it's the assign grader page :
-	if ($('body#page-mod-assign-grader')) {
-	    // Change button css class
-		$('button.collapse-none').removeClass('active');
-	    $('button.collapse-review-panel').addClass('active');
-		// change the view
-	    $('[data-region=review-panel]').addClass('collapsed');
-	}
-});
 
+    // Change the default view of the assign grader page (by default : collapse-review-panel).
+    // If it's the assign grader page.
+    if ($('body#page-mod-assign-grader')) {
+
+        // Change button css class.
+        $('button.collapse-none').removeClass('active');
+        $('button.collapse-review-panel').addClass('active');
+
+        // Change the view.
+        $('[data-region=review-panel]').addClass('collapsed');
+    }
+});
+// END add jjupin.
 
 {{/js}}

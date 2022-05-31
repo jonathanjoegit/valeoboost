@@ -1,0 +1,29 @@
+/** course
+-------------------------*/
+
+// Course Header
+.context-header-settings-menu {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+
+    max-width: none;
+    height: auto;
+    .edit-btn {
+        margin: .5rem 1rem;
+
+        color: $whiteText !important;
+        border: 0;
+        @media (max-width: $screen-sm-min) {
+            display: none;
+        }
+    }
+    .action-menu {
+        .dropdown-toggle .icon {
+            font-size: 40px;
+        }
+    }
+}

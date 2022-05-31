@@ -17,14 +17,12 @@
 /**
  * Theme functions.
  *
- * @package    theme_eadumboostvaleo
- * @copyright  2017 Jonathan J. - Le Mans Université
+ * @package    theme_valeoboost
+ * @copyright  2020 Jonathan J. - Le Mans Université
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
-
-/* lib here !*/
 
 
 /**
@@ -33,33 +31,47 @@ defined('MOODLE_INTERNAL') || die();
  * @param theme_config $theme The theme config object.
  * @return string
  */
-function theme_eadumboostvaleo_get_main_scss_content($theme) {
+function theme_valeoboost_get_main_scss_content($theme) {
     global $CFG;
 
-    // Safety fallback - maybe new installs etc.
     $scss = '';
-    $scss .= file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/default.scss');
+    $filename = !empty($theme->settings->preset) ? $theme->settings->preset : null;
+    $fs = get_file_storage();
 
-    // Post (style.scss) CSS - this is loaded AFTER the main scss but before the extra scss from the setting.
-    $post = file_get_contents($CFG->themedir . '/eadumboostvaleo/scss/styles.scss');
+    $context = context_system::instance();
+    if ($filename == 'default.scss') {
+        $scss .= file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/default.scss');
+    } else if ($filename == 'plain.scss') {
+        $scss .= file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/plain.scss');
+    } else if ($filename && ($presetfile = $fs->get_file($context->id, 'theme_boost', 'preset', 0, '/', $filename))) {
+        $scss .= $presetfile->get_content();
+    } else {
+        // Safety fallback - maybe new installs etc.
+        $scss .= file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/default.scss');
+    }
+
+    // Add theme custom scss.
+    $post = file_get_contents($CFG->themedir . '/valeoboost/scss/styles.scss');
 
     // Add custom styles for Test & Pre-production environment (theme setting).
     $value = $theme->settings->platform_env;
     if ($value == "Pre-Production") {
-        $post .= file_get_contents($CFG->themedir . '/eadumboostvaleo/scss/extra/env_preproduction.scss');
+        $post .= file_get_contents($CFG->themedir . '/valeoboost/scss/extra/env_preproduction.scss');
     } else if ($value == "Test") {
-        $post .= file_get_contents($CFG->themedir . '/eadumboostvaleo/scss/extra/env_test.scss');
+        $post .= file_get_contents($CFG->themedir . '/valeoboost/scss/extra/env_test.scss');
     }
 
     // Combine them together.
     return $scss . "\n" . $post;
 }
 
+
+
 /**
- * Modification du Nav-drawer de Moodle (appelé dans les layouts)
+ * Modification du Nav-drawer de Moodle (appelé dans les layouts), on étend ainsi la navigation
  * //doc NAVIGATION: https://docs.moodle.org/dev/Navigation_API#How_the_navigation_works
  */
-function theme_eadumboostvaleo_custom_nav_drawer(global_navigation $navigation) {
+function theme_valeoboost_extend_navigation($navigation) {
     global $PAGE, $CFG, $COURSE;
     require_once($CFG->libdir . '/completionlib.php');
 
@@ -86,11 +98,12 @@ function theme_eadumboostvaleo_custom_nav_drawer(global_navigation $navigation) 
                 // On créer un noeud et on utilise le add de la classe navigation_node_collection pour le ranger.
                 $url = new moodle_url($CFG->wwwroot.'/report/tuteur/index.php', array('course' => $COURSE->id));
                 $nodereport = navigation_node::create(
-                  "Rapport Tuteur",
+                    "Rapport Tuteur",
                     $url,
                     navigation_node::TYPE_SETTING,
                     "rapporttuteur",
-                    "rapporttuteur"
+                    "rapporttuteur",
+                    new pix_icon('i/report', 'rapporttuteur')
                 );
                 // Signature create($text, $action=null, $type=self::TYPE_CUSTOM, $shorttext=null, $key=null, pix_icon $icon=null).
 
@@ -104,8 +117,10 @@ function theme_eadumboostvaleo_custom_nav_drawer(global_navigation $navigation) 
         }
     }
 
+    // ISSUE : the page "enrol user" doesnt not exist any more (now only with a pop-up).
     // Ajouter "inscrire des utilisateurs" pour les admins.
     // Vérifier si l'user à le droit d'inscrire des utilisateurs (donc d'accèder à cette page).
+    /*
     $context = $PAGE->context;
     if (has_capability('enrol/manual:enrol', $context)) {
         // On récupère le noeud du cours (cours + section + ...).
@@ -115,11 +130,12 @@ function theme_eadumboostvaleo_custom_nav_drawer(global_navigation $navigation) 
             // On créer un noeud et on utilise le add de la classe navigation_node_collection pour le ranger.
             $url = new moodle_url($CFG->wwwroot.'/enrol/users.php', array('id' => $COURSE->id));
             $newnode = navigation_node::create(
-              get_string('enrolusers', 'enrol'),
+                get_string('enrolusers', 'enrol'),
                 $url,
                 navigation_node::TYPE_SETTING,
                 "enrolusers",
-                "enrolusers"
+                "enrolusers",
+                new pix_icon('i/enrolusers', 'enrolusers')
             );
 
             // On check s'il y a le noeud "participants", si oui on le met en dessous (sinon à la fin).
@@ -129,5 +145,5 @@ function theme_eadumboostvaleo_custom_nav_drawer(global_navigation $navigation) 
                 $node = $coursenode->children->add($newnode);
             }
         }
-    }
+    }*/
 }

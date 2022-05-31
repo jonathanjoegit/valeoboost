@@ -15,21 +15,28 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- *  THEME EADUM - Le Mans Université
+ *  Version
  *
- * @package    theme_eadumboostvaleo
- * @copyright  2017 Jonathan J. - Le Mans Université
+ * @package    theme_eadumboost
+ * @copyright  2022 Jonathan J. - Le Mans Université
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2017110600;
-$plugin->requires  = 2017050500;
-$plugin->release  = 'Thème EADUM Valéo v1.0.0';
-$plugin->component = 'theme_eadumboostvaleo';
+// Version (YYYYMMDDrr where rr is the release number)
+$plugin->version   = 2022051501;
 
-// This is a list of plugins, this plugin depends on (and their versions).
-$plugin->dependencies = [
-  'theme_boost' => '2017051500'
-];
+$plugin->requires  = 2020110900; // require moodle 3.10
+$plugin->component = 'theme_valeoboost';
+$plugin->release  = 'Theme VALEO v2 Moodle 3.10';
+
+$plugin->dependencies = array(
+    'theme_boost'  => 2020110900
+);
+
+/*
+* TIP:
+* When upgrade think about desintall if problem.
+* When changing name of plugin, think about renaming the lang files.
+*/

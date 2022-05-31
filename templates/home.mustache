@@ -1,137 +1,59 @@
+{{!
+    Home page (not connected)
+}}
 
-{{{ output.doctype }}}
-<html {{{ output.htmlattributes }}} class="homepageead">
-<head>
-	<title>{{{ output.page_title }}}</title>
-	<link rel="shortcut icon" href="{{{ output.favicon }}}" />
-	{{{ output.standard_head_html }}}
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
+{{! hack to hide main_content add jjupin }}
+<div class="d-none">
+    <section class="d-none" style="display:none;">
+        {{{ output.main_content }}}
+    </section>
+</div>
+{{! END hack to hide main_content add jjupin }}
 
-<body {{{ bodyattributes }}}>
-
-	<div id="page-wrapper">
-
-		{{{ output.standard_top_of_body_html }}}
-
-		<div id="page" class="container-fluid">
-			<div id="page-content" class="row">
+{{> theme_boost/head }}
 
 
-				<header id="page-header" class="clearfix">
-					<div id="subheader">
-						<div class="container">
-							<div class="row centered text-center">
-								<div class="col-lg-12 ">
-									{{# pix }} logo608px, theme, Logo EADUM{{/ pix }}
-									<h1>
-										{{# str }} sitetitle, theme_eadumboostvaleo {{/ str }}
-									</h1>
+<body {{{bodyattributes}}} >
+    <div id="page-wrapper" class="page-wrapper-home-valeoboost">
 
-									<video playsinline autoplay muted loop poster="<?php echo $OUTPUT->image_url('screenshotvid_1400', 'theme')?>" id="bgvid">
-										<source src="http://umotion.univ-lemans.fr/media/videos/jjupin/467/video_467_720.mp4" type="video/mp4">
-											<source src="http://umotion.univ-lemans.fr/media/videos/jjupin/467/video_467_720.webm" type="video/webm">
+        {{{ output.standard_top_of_body_html }}}
 
+        <div id="page" class="container-fluid home-valeoboost">
 
-											</video>
+            {{! home page header valeoboost  add jjupin }}
+            {{> theme_valeoboost/home_header }}
+
+            <div id="page-content" class="row pb-3">
+                <div id="region-main-box" class="col-12">
+                    <section id="region-main" class="d-flex justify-content-center">
 
 
-
-											<!--[if lt IE 9]>
-												<script>
-												document.createElement('video');
-												</script>
-												<![endif]-->
+                        {{! home page valeoboost  add jjupin }}
 
 
+                        {{#isguestuser}} {{> theme_valeoboost/home_guest }} {{/isguestuser}}
 
-												<div class="btn-login"><a href="{{{ loginlink }}}">
-													{{# str }} connect, theme_eadumboostvaleo {{/ str }}
-												</a></div>
-
-												<div class="btn-play centered">
-													<a href="http://umotion.univ-lemans.fr/video/0339-luniversite-du-maine-a-distance/" target="_blank">
-														{{# pix }} play_wh, theme{{/ pix }}
+                        {{^isguestuser}} {{> theme_valeoboost/home_content }} {{/isguestuser}}
 
 
-														{{# str }} watchvideo, theme_eadumboostvaleo {{/ str }}
-													</a>
-												</div>
-
-											</div>
-										</div><!-- row -->
-									</div>
-
-								</div>
+                            {{! END home pagevaleoboost  add jjupin }}
 
 
-							</header>
+                    </section>
+                </div>
+            </div>
+        </div>
 
-							<div id="page-content" class="row-fluid ead-home-content">
-
-								<section id="region-main">
-
-										<div class="container-fluid  cadre-home">
-
-											<div class="row-fluid text_home text-center ">
+        {{{ output.standard_after_main_region_html }}}
+        {{> theme_boost/footer }}
 
 
-												<div class="col-md-2 col-xs-12 imgcenter">
-													{{# pix }} id-card_70, theme{{/ pix }}
-												</div>
-												<div class="p_home col-md-10 col-xs-12">
-													{{# str }} txthome1, theme_eadumboostvaleo {{/ str }}
-												</div>
+    </div>
+    {{{ output.standard_end_of_body_html }}}
 
+</body>
 
-												<div class="col-md-2 col-xs-12 imgcenter">
-													{{# pix }} layers_70, theme{{/ pix }}
-												</div>
-												<div class="p_home col-md-10 col-xs-12">
-														{{# str }} txthome2, theme_eadumboostvaleo {{/ str }}
-												</div>
-
-												<div class="col-md-2 col-xs-12 imgcenter">
-													{{# pix }} info_70, theme{{/ pix }}
-												</div>
-												<div class="p_home col-md-10 col-xs-12">
-														{{# str }} txthome3, theme_eadumboostvaleo {{/ str }}
-												</div>
-
-												<div class="col-md-2 col-xs-12 imgcenter">
-													{{# pix }} laptop_70, theme{{/ pix }}
-												</div>
-												<div class="p_home col-md-10 col-xs-12">
-														{{# str }} txthome4, theme_eadumboostvaleo {{/ str }}
-												</div>
-
-
-
-
-											</div>
-
-										</div>
-								</section>
-
-
-
-								<section class="novisible" style="display:none;">
-									{{{ output.main_content }}}
-
-								</section>
-							</div>
-
-
-
-						</div>
-					</div>
-				</div>
-
-				{{>theme_eadumboostvaleo/footer}}
-
-				{{{ output.standard_end_of_body_html }}}
-			</body>
-			</html>
-			{{#js}}
-			require(['theme_boost/loader']);
-			{{/js}}
+</html>
+{{#js}}
+    require(['theme_boost/loader']);
+{{/js}}

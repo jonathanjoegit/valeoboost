@@ -17,30 +17,44 @@
 /**
  * Theme settings.
  *
- * @package    theme_eadumboostvaleo
- * @copyright  2017 Jonathan J. - Le Mans Université
+ * @package    theme_valeoboost
+ * @copyright  2020 Jonathan J. - Le Mans Université
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
 if ($ADMIN->fulltree) {
-    $settings = new theme_boost_admin_settingspage_tabs('themesettingeadumboostvaleo', get_string('configtitle', 'theme_eadumboostvaleo'));
-    $page = new admin_settingpage('theme_eadumboostvaleo_general', get_string('generalsettings', 'theme_eadumboostvaleo'));
+    $settings = new theme_boost_admin_settingspage_tabs('themesettingvaleoboost', get_string('configtitle', 'theme_boost'));
+    $page = new admin_settingpage('theme_boost_general', get_string('generalsettings', 'theme_boost'));
 
     // Set plateform environment (to have extra CSS for test & pre prod).
-    $name = 'theme_eadumboostvaleo/platform_env';
-    $title = get_string('platform_env', 'theme_eadumboostvaleo');
-    $description = get_string('platform_env_desc', 'theme_eadumboostvaleo');
+    $name = 'theme_valeoboost/platform_env';
+    $title = get_string('platform_env', 'theme_valeoboost');
+    $description = get_string('platform_env_desc', 'theme_valeoboost');
     $default = 'Production';
     $choices = array(
-      'Production' => 'Production',
-      'Pre-Production' => 'Pre-Production',
-      'Test' => 'Test'
+        'Production' => 'Production',
+        'Pre-Production' => 'Pre-Production',
+        'Test' => 'Test'
     );
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $page->add($setting);
+
+    // Show a block for Angers Université users in the login page.
+    $name = 'theme_valeoboost/connexion_angers_users';
+    $title = get_string('title_angers_users', 'theme_valeoboost');
+    $description = get_string('text_angers_user', 'theme_valeoboost');
+    $default = 0;
+    $choices = array(
+        0 => "No",
+        1 => "Yes"
+    );
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $page->add($setting);
+
 
     $settings->add($page);
 }
