@@ -18,7 +18,7 @@
  * Theme functions.
  *
  * @package    theme_valeoboost
- * @copyright  2022 Jonathan J. - Le Mans Université
+ * @copyright  2021 Jonathan J. - Le Mans Université
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
