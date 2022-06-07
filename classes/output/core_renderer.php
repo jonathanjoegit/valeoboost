@@ -40,7 +40,7 @@ defined('MOODLE_INTERNAL') || die;
  * Renderers to align Moodle's HTML with that expected by Bootstrap
  *
  * @package    theme_valeoboost
- * @copyright  2020 Jonathan J.
+ * @copyright  2022 Jonathan J.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class core_renderer extends \theme_boost\output\core_renderer {
@@ -59,91 +59,61 @@ class core_renderer extends \theme_boost\output\core_renderer {
         }
         $custommenu = new custom_menu($custommenuitems, current_language());
 
-        // custom menu.
-        if (isloggedin() && !isguestuser() ) {
+        // Add dahsboard and my courses access.
+        $this->umboost_get_dashboard_for_custom_menu($custommenu);
 
-            // Add dahsboard and my courses access.
-            $this->umboost_get_dashboard_for_custom_menu($custommenu);
-
-            // Add course search for manager and admin (if you have the good capability).
-            if (has_capability('moodle/course:view', $this->page->context)
-            && has_capability('moodle/course:viewhiddencourses', $this->page->context)) {
-                $this->umboost_get_searchcourses_for_custom_menu($custommenu);
-            }
-            // Add custom menus (MAIL, Help, ...).
-            // NO DISPLAYED ANY MORE $this->umboost_get_custom_items_for_custom_menu($custommenu);.
-
+        // Add course list for manager and admin (if you have the good capability).
+        if (has_capability('moodle/course:view', $this->page->context)
+        && has_capability('moodle/course:viewhiddencourses', $this->page->context)) {
+            $this->umboost_get_courselist_for_custom_menu($custommenu);
         }
+
         return $this->render_custom_menu($custommenu);
     }
 
     /**
-    * OVERRIDE this render to not show the lang menu !
-    */
-   protected function render_custom_menu(custom_menu $menu) {
-       global $CFG;
-
-       $content = '';
-       foreach ($menu->get_children() as $item) {
-           $context = $item->export_for_template($this);
-           $content .= $this->render_from_template('core/custom_menu_item', $context);
-       }
-
-       return $content;
-   }
-
-    /**
-     * Add dashboard and my courses access to custom menu.
+     * OVERRIDE this render to not show the lang menu !
      */
-    protected function umboost_get_dashboard_for_custom_menu($custommenu) {
-        global $CFG;
+    protected function render_custom_menu(custom_menu $menu) {
 
-        $branchtitle = $branchlabel = get_string('myhome');
-        $branchurl = new moodle_url('');
-        $branchsort = 1;
-
-        $branch = $custommenu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
-
-        $hometext = get_string('myhome');
-        $homelabel = html_writer::tag('i', '', array('class' => 'fa fa-home')).html_writer::tag('span', ' '.$hometext);
-        $branch->add($homelabel, new moodle_url('/my/index.php'), $hometext);
-
-        // Get 'My courses' sort preference from admin config.
-        if (!$sortorder = $CFG->navsortmycoursessort) {
-            $sortorder = 'sortorder';
+        $content = '';
+        foreach ($menu->get_children() as $item) {
+            $context = $item->export_for_template($this);
+            $content .= $this->render_from_template('core/custom_menu_item', $context);
         }
-
-        // Retrieve courses and add them to the menu when they are visible.
-        $numcourses = 0;
-
-        if ($courses = enrol_get_my_courses(null, $sortorder . ' ASC')) {
-            foreach ($courses as $course) {
-                if ($course->visible) {
-                    $branch->add('<span class="fa fa-graduation-cap"></span>'.format_string($course->fullname),
-                    new moodle_url('/course/view.php?id=' . $course->id), format_string($course->shortname));
-                    $numcourses += 1;
-                } else if (has_capability('moodle/course:viewhiddencourses', context_course::instance($course->id))) {
-                    $branchtitle = format_string($course->shortname);
-                    $branchlabel = '<span class="dimmed_text">'.format_string($course->fullname) . '</span>';
-                    $branchurl = new moodle_url('/course/view.php', array('id' => $course->id));
-                    $branch->add($branchlabel, $branchurl, $branchtitle);
-                    $numcourses += 1;
-                }
-            }
-        }
-        if ($numcourses == 0 || empty($courses)) {
-            $noenrolments = get_string('noenrolments', 'theme_valeoboost');
-            $branch->add('<em>' . $noenrolments . '</em>', new moodle_url(''), $noenrolments);
-        }
-
+        return $content;
     }
 
     /**
-     * add searchcourses to custom menu.
+     * Add dashboard and my courses access to custom menu (all users).
      */
-    protected function umboost_get_searchcourses_for_custom_menu( $custommenu) {
+    protected function umboost_get_dashboard_for_custom_menu(custom_menu $menu) {
+        global $CFG;
+
+        $mycourses = $this->page->navigation->get('mycourses');
+
+        if (isloggedin() && $mycourses && $mycourses->has_children()) {
+            $branchtitle = "dashboard"; // Title that we can use with CSS.
+            $branchlabel = get_string('myhome');
+            $branchurl   = new moodle_url('/course/index.php');
+            $branchsort  = 1;
+
+            $branch = $menu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
+
+            foreach ($mycourses->children as $coursenode) {
+                $branch->add($coursenode->get_content(), $coursenode->action, $coursenode->get_title());
+            }
+        }
+    }
+    
+
+    /**
+     * add course list to custom menu (for admin).
+     */
+    protected function umboost_get_courselist_for_custom_menu( $custommenu) {
         // Fetch courses.
-        $branchtitle = $branchlabel = get_string('recherchecours', 'theme_valeoboost');
+        $branchtitle = "courselist"; // Title that we can use with CSS.
+        $branchlabel = get_string('courselist', 'theme_valeoboost');
         $branchurl = new moodle_url('/course/index.php');
         $branchsort = 2;
 
@@ -151,28 +121,6 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 
 
-    /**
-     * add customs items (UM MAIL, help, ...)
-     */
-    protected function umboost_get_custom_items_for_custom_menu( $custommenu) {
-
-        // Mail.
-        $branchtitle = $branchlabel = get_string('mail', 'theme_valeoboost');
-        $branchurl = new moodle_url('http://webmail.univ-lemans.fr/');
-        $branchsort = 3;
-        $custommenu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
-
-        // Aide.
-        $branchtitle = $branchlabel = get_string('support', 'theme_valeoboost');
-        $branchurl = new moodle_url('');
-        $branchsort = 4;
-        $branch = $custommenu->add($branchlabel, $branchurl, $branchtitle, $branchsort);
-        // Sub branches.
-        $sbranchtitle = $sbranchlabel = get_string('assistanceEtu', 'theme_valeoboost');
-        $sbranchurl = new moodle_url('/um_apps/faq/faq-connexion.html');
-        $branch->add($sbranchlabel, $sbranchurl, $sbranchtitle);
-
-    }
 
 
     /**
@@ -215,10 +163,10 @@ class core_renderer extends \theme_boost\output\core_renderer {
     /** Overriding! (check moodle 3.8 ok)
      * Wrapper for header elements => QUEST CE QUON FAIT ?
      *
-     * @todo: Documenter la fonction + utiliser son parent.
+     * @todo: CLEAN OU Documenter la fonction + utiliser son parent.
      * @return string HTML to display the main header.
      */
-    public function full_header() {
+    /* public function full_header() {
         global $PAGE;
 
         if ($PAGE->include_region_main_settings_in_header_actions() && !$PAGE->blocks->is_block_present('settings')) {
@@ -241,19 +189,19 @@ class core_renderer extends \theme_boost\output\core_renderer {
         $header->courseheader = $this->course_header();
         $header->headeractions = $PAGE->get_header_actions();
 
-        /* ADD JJUPIN: add "edit mode" in course. */
-        $header->editbutton = $this->umboost_edit_button();
-        /* ADD JJUPIN: custom template */
+        // ADD JJUPIN: add "edit mode" in course. 
+        //$header->editbutton = $this->umboost_edit_button();
+        // ADD JJUPIN: valeoboost template ATTENTION TEMPLATE SUPP DE LA NOUVELLE VERSION !!! 
         return $this->render_from_template('theme_valeoboost/full_header', $header);
     }
-
+	*/
 
     /**
      * Add editing button in a course
      *
      * @return string the editing button
      */
-    public function umboost_edit_button() {
+   /* public function umboost_edit_button() {
         global $PAGE, $COURSE;
 
         if (!$PAGE->user_allowed_editing() || $COURSE->id <= 1) {
@@ -283,7 +231,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 'title' => $title,
             ));
         }
-    }
+    }*/
 
 
     /**
@@ -349,7 +297,6 @@ class core_renderer extends \theme_boost\output\core_renderer {
             // ADD JJUPIN: We display the custom menu after "turn editing" / add jjupin.
             if ($menuitem->key == "turneditingonoff" ) {
                 $this->umboost_get_custom_action_menu_for_course_header($menu);
-                //$custommenuok = true;
             }
         }
         return $skipped;
@@ -357,6 +304,9 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
     /**
      * Add custom items to the course settings menu.
+     * - participation
+     * - enrolmentmethods
+     * - questionbank
      */
     protected function umboost_get_custom_action_menu_for_course_header( $menu) {
 
@@ -412,7 +362,11 @@ class core_renderer extends \theme_boost\output\core_renderer {
             $url = $url->out(false);
         }
         $context->logourl = $url;
-        $context->sitename = format_string($SITE->fullname, true, ['context' => context_course::instance(SITEID), "escape" => false]);
+        $context->sitename = format_string(
+            $SITE->fullname,
+            true,
+            ['context' => context_course::instance(SITEID), "escape" => false]
+        );
 
         /* Add informaiton about the CAS (from GET) CAS or NOCAS. */
         /* If we are in /login/ => we want CAS*/
@@ -423,7 +377,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
         }
         $context->cas = $cas;
 
-        // create URL: CAS / NOCAS / Angers
+        // Create URL: CAS / NOCAS / Angers.
         $linkcas = new moodle_url('/login/index.php',
         array('authCAS' => "CAS"));
         $context->linkcas = $linkcas;
@@ -432,7 +386,9 @@ class core_renderer extends \theme_boost\output\core_renderer {
         array('authCAS' => "NOCAS"));
         $context->linknocas = $linnocas;
 
-        $linkangers = new moodle_url('/auth/shibboleth/index.php');
+        // ISSUE WITH HTTPS: @todo, CHECK ALL THIS LATER !
+        // We force https (so no: new moodle_url('/auth/shibboleth/index.php').
+        $linkangers = new moodle_url('https://ead.univ-lemans.fr/moodle/auth/shibboleth/index.php');
         $context->linkangers = $linkangers;
 
         return $this->render_from_template('theme_valeoboost/loginform', $context);

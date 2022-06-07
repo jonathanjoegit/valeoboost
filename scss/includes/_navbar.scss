@@ -3,7 +3,7 @@
 
 .navbar {
     border-bottom: $navbarBorderSize solid $navbarBorderColor;
-    background-color: $navbarBackgroundColor;
+    background-color: $navbarBackgroundColor !important;
 
     .logo img {
         width: auto;
@@ -30,9 +30,40 @@
     }
     .dropdown-item:hover {
         background-color: $navbarHoverColor;
+        color: $blackText !important;
+
     }
     /* Notification, it was white with background white. */
-        .notification a {
-            color: $blackText !important;
+    .notification a {
+        color: $blackText !important;
+    }
+    /* Search bar : */
+    .simplesearchform .collapse {
+        background-color: $navdrawerBackground;
     }
 }
+
+
+/* Show icon in custom menu in nav-bar. */
+ nav ul.navbar-nav:first-of-type li.nav-item { 
+    a:before{
+        //display: inline-block;
+        font-family: FontAwesome;
+        color: $whiteTextHover;
+        padding-right: 0.2rem;
+        font-size: 1.1rem ;
+    }
+    a:hover:before{
+        color: $whiteText;
+    }
+    a[title="dashboard"]:before { 
+        content: "\f19d"; /* fontawesome unicode */
+    }
+    a[title="courselist"]:before { 
+        content: "\f03a"; /* fontawesome unicode */
+    }
+    @media (max-width: $screen-xl-min) {
+        font-size:0px;
+    }
+
+  }

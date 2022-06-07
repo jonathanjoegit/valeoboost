@@ -24,7 +24,7 @@
 
 $string['pluginname'] = 'VALEO boost';
 $string['choosereadme'] = 'Theme VALEOBOOST is a child theme of Boost for Le Mans Université';
-$string['region-side-pre'] = 'region-side-pre';
+$string['configtitle'] = 'VALEO boost';
 
 /* LOGIN. */
 $string['connect-form-welcome'] = 'Welcome!';
@@ -39,8 +39,6 @@ $string['connect-angers-text'] = 'Users registered at the University of Angers, 
 $string['connect-angers-button'] = 'Log in with your account <i>Université Angers</i>';
 
 
-
-
 /* custom UMTICE. */
 $string['noenrolments'] = 'No enrolments';
 $string['assistanceEns'] = 'Staff helpdesk';
@@ -48,7 +46,7 @@ $string['assistanceTP'] = 'Assistance';
 $string['FAQ'] = 'FAQ';
 $string['espaceformation'] = 'Staff training';
 $string['creerespacecours'] = 'New course creation form';
-$string['recherchecours'] = 'Search courses';
+$string['courselist'] = 'Course list';
 $string['mail'] = 'Mailbox LMU';
 
 /* Connections anonymes. */
@@ -91,13 +89,20 @@ $string['methodologie'] = 'Methodological resources';
 // Footer.
 $string['support:'] = 'Help:';
 $string['txtAssistanceFooter'] = '<ul>
-<li>
+	<li>
 <a href="http://ead.univ-lemans.fr/moodle/um_apps/faq/" target="_blank">
 Student helpdesk
 </a>
 </li>
+<li>
+<a href="http://appui-pedagogique.univ-lemans.fr/" target="_blank">
+Training catalogue for pedagogical support
+</a>
+</li>
 </ul>
 ';
+$string['legalnotice'] = 'Legal notice';
+$string['charteEADUM'] = 'Charte EADUM';
 
 
 
@@ -107,40 +112,39 @@ $string['connect'] = 'Login';
 $string['watchvideo'] = 'Watch the video';
 
 $string['txthome1'] = ' <H3>Virtual Learning Environment:</H3>
-This e-learning platform is dedicated to learners who have enrolled to one of the distance-learning courses at Le Mans Université.  Once registered, you need to get your login and password in order to access digital resources and activities.  Our VLE is a collaborative environment where you will be able to explore educational contents and interact with students and lecturers on your course.
+	This e-learning platform is dedicated to learners who have enrolled to one of the distance-learning courses at Le Mans Université.  Once registered, you need to get your login and password in order to access digital resources and activities.  Our VLE is a collaborative environment where you will be able to explore educational contents and interact with students and lecturers on your course.
 ';
 $string['txthome2'] = '<H3>Our training courses:</H3>
-Since 2001, Le Mans Université offers over 20 distance-learning qualifications in 4 areas:
-    <ul>
-    <li>Law, economics, management</li>
-    <li>Arts, literature, languages</li>
-    <li>Humanities and social sciences</li>
-    <li>Sciences, technology, health</li>
-    </ul>
-    Undergraduate, post-graduate and continuing education online courses are available at any time depending on your individual goals as a student, professional or job seeker.  E-learning  is a way for employers and staff to select quality accredited training programmes that are tailored to meet their organisational and economic requirements.
-    ';
-    $string['txthome3'] = '<H3>Help:</H3>
-    You are an existing or soon-to-become distance-learner and are experiencing difficulties ?  We are here to help !
-    <ul>
-    <li><a target="_blank" href="http://ead.univ-lemans.fr/moodle/um_apps/faq/">Read our FAQ</a></li>
-    <li>Contact us: <br />
-    - by mail:
-    <a href="mailto:ead-assistance@univ-lemans.fr">ead-assistance@univ-lemans.fr</a> <i>(we will answer within 24 hours Mon-Fri))</i>
-    <br />
-    - by phone au <span style="color: #08C;">+33 2 43 83 26 88</span> <em>(service available between September and March)</em>
-    <br />
+	Since 2001, Le Mans Université offers over 20 distance-learning qualifications in 4 areas:
+<ul>
+<li>Law, economics, management</li>
+<li>Arts, literature, languages</li>
+<li>Humanities and social sciences</li>
+<li>Sciences, technology, health</li>
+</ul>
+Undergraduate, post-graduate and continuing education online courses are available at any time depending on your individual goals as a student, professional or job seeker.  E-learning  is a way for employers and staff to select quality accredited training programmes that are tailored to meet their organisational and economic requirements.
+';
+$string['txthome3'] = '<H3>Help:</H3>
+	You are an existing or soon-to-become distance-learner and are experiencing difficulties ?  We are here to help !
+<ul>
+<li><a target="_blank" href="http://ead.univ-lemans.fr/moodle/um_apps/faq/">Read our FAQ</a></li>
+<li>Contact us: <br />
+- by mail:
+<a href="mailto:ead-assistance@univ-lemans.fr">ead-assistance@univ-lemans.fr</a> <i>(we will answer within 24 hours Mon-Fri))</i>
+<br />
+- by phone au <span style="color: #08C;">+33 2 43 83 26 88</span> <em>(service available between September and March)</em>
+<br />
 
-    </li>
-    </ul>
-    ';
-    $string['txthome4'] = '<H3>Accessibility:</H3>
-    This website is optimised for the latest versions of Firefox and Chrome.
-    Remember to update your own Web browser.  You can also access the courses directly on your tablet.
-    ';
-    // Admin.
-    $string['configtitle'] = 'Config title';
-    $string['generalsettings'] = 'General Settings';
-    $string['platform_env'] = 'Platform environment';
-    $string['platform_env_desc'] = 'Platform environment selection. This selection changes the theme logo "EADUM" in "Test" and "Pre-production" to show it\'s not the "Production" platform';
-    $string['title_angers_users'] = 'Connection with Angers';
-    $string['text_angers_user'] = 'Show a block for Angers Université users in the login page?';
+</li>
+</ul>
+';
+$string['txthome4'] = '<H3>Accessibility:</H3>
+	This website is optimised for the latest versions of Firefox and Chrome.
+Remember to update your own Web browser.  You can also access the courses directly on your tablet.
+';
+// Admin.
+$string['generalsettings'] = 'General Settings';
+$string['platform_env'] = 'Platform environment';
+$string['platform_env_desc'] = 'Platform environment selection. This selection changes the theme logo "EADUM" in "Test" and "Pre-production" to show it\'s not the "Production" platform';
+$string['title_angers_users'] = 'Connection with Angers';
+$string['text_angers_user'] = 'Show a block (or not) for Angers Université users in the login page';

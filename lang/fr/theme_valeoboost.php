@@ -24,27 +24,19 @@
 
 $string['pluginname'] = 'VALEO boost';
 $string['choosereadme'] = 'Theme VALEOBOOST is a child theme of Boost for Le Mans Université';
-$string['region-side-pre'] = 'region-side-pre';
+$string['configtitle'] = 'VALEO boost';
 
 /* LOGIN. */
 $string['connect-form-welcome'] = 'Bienvenue !';
 $string['connect-form-title'] = 'Pour continuer, veuillez vous connecter&nbsp;:';
-$string['connect-as-um-user'] = 'Avec son compte <i>Le Mans Université</i>';
+$string['connect-as-um-user'] = 'Avec votre compte <i>Le Mans Université</i>';
 $string['connect-other-users'] = '<i>Autres utilisateurs</i>, <i>Université d\'Angers</i> et <i>Université de Tours</i>';
 $string['connect-manual'] = 'Connectez-vous avec un compte manuel&nbsp;:';
 $string['connect-manual-button'] = 'Se connecter avec un compte manuel';
 $string['connect-form-or'] = 'Ou';
 $string['connect-help'] = '<a href="http://ead.univ-lemans.fr/moodle/um_apps/faq/faq-connexion.html" target="_blank"> Des soucis pour se connecter ?</a>';
 $string['connect-angers-text'] = 'Utilisateurs inscrits à l\'Université d\'Angers, connectez-vous à l\'aide de vos identifiants habituels (ceux que vous utilisez dans votre université) : ';
-$string['connect-angers-button'] = 'Se connecter avec son compte <i>Université Angers</i>';
-
-
-
-
-
-
-
-
+$string['connect-angers-button'] = 'Se connecter avec votre compte <i>Université Angers</i>';
 
 
 /* Custom UMTICE. */
@@ -54,7 +46,7 @@ $string['assistanceTP'] = 'Assistance pédagogique et technique';
 $string['FAQ'] = 'FAQ';
 $string['espaceformation'] = 'Espace formations';
 $string['creerespacecours'] = 'Créer un espace-cours ';
-$string['recherchecours'] = 'Rechercher un cours';
+$string['courselist'] = 'Tous les cours';
 $string['mail'] = 'Messagerie LMU';
 
 
@@ -106,6 +98,22 @@ Assistance étudiants
 </li>
 </ul>
 ';
+$string['legalnotice'] = 'Mentions légales';
+$string['charteEADUM'] = 'Charte EADUM';
+$string['txtAssistanceFooter'] = '<ul>
+<li>
+<a href="http://ead.univ-lemans.fr/moodle/um_apps/faq/" target="_blank">
+Assistance étudiants
+</a>
+</li>
+<li>
+<a href="http://appui-pedagogique.univ-lemans.fr/" target="_blank">
+Catalogue de formation d\'appui à la pédagogie
+</a>
+</li>
+</ul>
+';
+
 
 // Custome home EADUM.
 $string['sitetitle'] = 'A chacun son accès aux études supérieures';
@@ -150,3 +158,11 @@ Vous êtes ou devenez étudiant à distance et vous rencontrez une difficulté ?
 $string['txthome4'] = '<H3>Accessibilité :</H3>
 Ce site web est optimisé pour les dernières mises à jour des navigateurs web Firefox et Chrome.
 Pensez à mettre à jour votre navigateur. Vous pouvez également y accéder depuis votre tablette et votre mobile. repri';
+
+// Admin.
+$string['generalsettings'] = 'Paramètres';
+$string['platform_env'] = 'Environnement';
+$string['platform_env_desc'] = 'Sélection de l\'environnement de la plate-forme. Cette sélection change le logo du thème pour montrer qu\'il ne s\'agit pas de la plateforme "Production".';
+$string['title_angers_users'] = 'Connexion avec Angers';
+$string['text_angers_user'] = 'Afficher un bloc (ou non) pour les utilisateurs d\'Angers Université dans la page de connexion';
+

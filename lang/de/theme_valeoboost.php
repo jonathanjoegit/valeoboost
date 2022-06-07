@@ -56,6 +56,8 @@ Unterstützung für Studente
 </li>
 </ul>
 ';
+$string['legalnotice'] = 'Rechtliche Hinweise';
+$string['charteEADUM'] = 'Charte EADUM';
 
 // Custom home EADUM.
 $string['sitetitle'] = 'Ein dynamischer Zugang zum Hochschulabschluss';
